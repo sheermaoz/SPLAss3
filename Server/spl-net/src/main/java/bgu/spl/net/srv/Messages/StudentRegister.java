@@ -1,5 +1,5 @@
-package bgu.spl.net.srv;
+package bgu.spl.net.srv.Messages;
 
-public class Register extends Message {
+public class StudentRegister extends Message {
     
 }
