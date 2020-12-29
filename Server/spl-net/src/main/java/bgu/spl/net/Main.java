@@ -7,5 +7,6 @@ public class Main {
         Database database = Database.getInstance();
         database.initialize("spl-net/src/main/java/bgu/spl/net/Courses.txt");
         database.print();
+        System.out.println(database.getClass().equals(Database.class));
     }
 }

@@ -107,18 +107,18 @@ public class Database {
         return true;
     }
 
-    public boolean login (String name, String password)
+    public User login (String name, String password)
     {
         User user = getUser(name);
         if (user == null)
         {
-            return false;
+            return null;
         }
         if (user.getPassword().equals(password))
         {
-            return true;
+            return user;
         }
-        return false;
+        return null;
     }
 
     
