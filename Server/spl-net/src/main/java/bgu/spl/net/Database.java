@@ -17,11 +17,16 @@ public class Database {
 		// TODO: implement
 	}
 
+	private static class DatabaseHolder
+	{
+		private static Database singleton = new Database();
+	}
+
 	/**
 	 * Retrieves the single instance of this class.
 	 */
 	public static Database getInstance() {
-		return singleton;
+		return DatabaseHolder.singleton;
 	}
 	
 	/**
