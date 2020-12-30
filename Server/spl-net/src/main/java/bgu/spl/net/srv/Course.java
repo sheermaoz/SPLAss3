@@ -4,15 +4,19 @@ public class Course {
     
     private short num;
     private String name;
-    private short[] kdamCourses;
-    private int numStudents;
+    private Short[] kdamCourses;
+    private int maxStuds;
+    private int numStuds;
+    private int index;
 
-    public Course(short _num, String _name, short[] _kdam, int _numStud)
+    public Course(short _num, String _name, Short[] _kdam, int _maxStuds, int _index)
     {
         num = _num;
         name = _name;
         kdamCourses = _kdam;
-        numStudents = _numStud;
+        maxStuds = _maxStuds;
+        index = _index;
+        numStuds = 0;
     }
 
     public String getName()
@@ -25,13 +29,33 @@ public class Course {
         return num;
     }
 
-    public short[] getKdam()
+    public Short[] getKdam()
     {
         return kdamCourses;
     }
 
     public int getNumStudents()
     {
-        return numStudents;
+        return maxStuds;
+    }
+
+    public int getIndex()
+    {
+        return index;
+    }
+
+    public boolean register()
+    {
+        if (numStuds < maxStuds)
+        {
+            numStuds++;
+            return true;
+        }
+        return false;
+    }
+
+    public void unregister()
+    {
+        numStuds--;
     }
 }
