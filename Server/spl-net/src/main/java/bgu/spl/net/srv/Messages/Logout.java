@@ -1,6 +1,6 @@
 package bgu.spl.net.srv.Messages;
 
-public class Logout extends Message{
+public class Logout extends Message<String> {
 
     public Logout()
     {

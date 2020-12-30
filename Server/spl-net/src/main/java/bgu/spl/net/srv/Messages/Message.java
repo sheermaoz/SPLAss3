@@ -1,8 +1,9 @@
 package bgu.spl.net.srv.Messages;
 
 
-public abstract class Message {
+public abstract class Message<T> {
     short opcode;
+    T [] args;
     public Message(short _opcode)
     {
         opcode = _opcode;
@@ -11,5 +12,10 @@ public abstract class Message {
     public short getOpcode()
     {
         return opcode;
+    }
+
+    public T [] getArgs()
+    {
+        return args;
     }
 }
