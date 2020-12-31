@@ -25,5 +25,5 @@ public abstract class Message {
         return args;
     }
 
-    public abstract <T> T process(T args);
+    public abstract Object process();
 }
