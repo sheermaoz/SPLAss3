@@ -1,22 +1,34 @@
 package bgu.spl.net.srv.Messages;
 
-public class Ack extends Response{
-    
+import bgu.spl.net.srv.User;
+
+public class Ack extends Message {
+
     private String args;
-    
-    public Ack(short resp)
-    {
-        super((short)12, resp);
+    private short resp;
+
+    public Ack(short _resp) {
+        super((short) 12);
+        resp = _resp;
     }
 
-    public void addArg(String arg)
-    {
+    public void addArg(String arg) {
         args = args + arg;
     }
 
-    public String toString()
-    {
-        return  "" + opCode + resp + args + "\0";
+    public String toString() {
+        return ""  + resp + args + "\0";
+    }
+
+    @Override
+    public void init(String str) {
+       resp = Short.valueOf(str);
+
+    }
+
+    @Override
+    public Object process(User usr) {
+        return null;
     }
 
 }

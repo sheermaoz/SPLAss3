@@ -1,11 +1,30 @@
-package bgu.spl.net.srv.Messages,*;
+package bgu.spl.net.srv.Messages;
 
+import bgu.spl.net.srv.User;
 
-public class Err extends Response {
-    
-    public Err(short _opcode)
-    {
-        super((short)13);
+public class Err extends Message {
+
+    private short resp;
+
+    public Err(short _resp) {
+        super((short) 13);
+        resp = _resp;
+    }
+
+    @Override
+    public String toString() {
+        return ""  + resp;
+    }
+
+    @Override
+    public void init(String str) {
+        resp = Short.valueOf(str);
+
+    }
+
+    @Override
+    public Object process(User usr) {
+        return null;
     }
     
 }

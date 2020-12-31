@@ -1,5 +1,8 @@
 package bgu.spl.net.srv;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Course {
     
     private short num;
@@ -8,6 +11,7 @@ public class Course {
     private int maxStuds;
     private int numStuds;
     private int index;
+    private List<String> students;
 
     public Course(short _num, String _name, Short[] _kdam, int _maxStuds, int _index)
     {
@@ -17,6 +21,7 @@ public class Course {
         maxStuds = _maxStuds;
         index = _index;
         numStuds = 0;
+        students = new LinkedList<>();
     }
 
     public String getName()
@@ -34,9 +39,14 @@ public class Course {
         return kdamCourses;
     }
 
-    public int getNumStudents()
+    public int getMaxStudents()
     {
         return maxStuds;
+    }
+
+    public int getNumStudents()
+    {
+        return numStuds;
     }
 
     public int getIndex()
@@ -44,18 +54,25 @@ public class Course {
         return index;
     }
 
-    public boolean register()
+    public boolean register(String name)
     {
         if (numStuds < maxStuds)
         {
             numStuds++;
+            students.add(name);
             return true;
         }
         return false;
     }
 
-    public void unregister()
+    public void unregister(String name)
     {
+        students.remove(name);
         numStuds--;
+    }
+
+    public List<String> getStudents()
+    {
+        return students;
     }
 }

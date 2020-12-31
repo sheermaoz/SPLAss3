@@ -1,5 +1,6 @@
 package bgu.spl.net.srv.Messages;
 
+import bgu.spl.net.srv.User;
 
 public abstract class Message {
 
@@ -25,5 +26,5 @@ public abstract class Message {
         return args;
     }
 
-    public abstract Object process();
+    public abstract Object process(User usr);
 }

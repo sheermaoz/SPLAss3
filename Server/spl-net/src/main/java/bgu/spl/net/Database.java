@@ -7,8 +7,6 @@ import bgu.spl.net.srv.CourseComparator;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,14 +26,10 @@ public class Database {
 
     private Map<Short, Course> courses;
     private Map<String, User> users;
-    private Map<String, List<Short>> userCourses;
-    private Map<Short, List<String>> courseUsers;
     //to prevent user from creating new Database
     private Database() {
         courses = new ConcurrentHashMap<>();
         users = new ConcurrentHashMap<>();
-        userCourses = new ConcurrentHashMap<>();
-        courseUsers = new ConcurrentHashMap<>();
     }
 
     private static class DatabaseHolder
@@ -69,7 +63,6 @@ public class Database {
                 Short[] kdam = parseKdam(splitData[2]);
                 int studNum = Integer.valueOf(splitData[3]);
                 courses.put(courseNum, new Course(courseNum, courseName, kdam, studNum, index));
-                courseUsers.put(courseNum, new LinkedList<>());
                 index++;
             }
             reader.close();
@@ -115,7 +108,6 @@ public class Database {
             return false;
         }
         users.put(name, new User(name, type, password));
-        userCourses.put(name, new LinkedList<>());
         return true;
     }
 
@@ -135,10 +127,9 @@ public class Database {
 
     public boolean courseRegister(String name, short course)
     {
-        if (courses.get(course).register())
+        if (courses.get(course).register(name))
         {
-            userCourses.get(name).add(course);
-            courseUsers.get(course).add(name);
+            users.get(name).register(course);
         }
         return false;
     }
@@ -152,25 +143,18 @@ public class Database {
 
     public boolean isRegistered(String name, Short course)
     {
-        return userCourses.get(name).contains(course);
+        return users.get(name).contains(course);
     }
 
     public boolean unregister(String name, Short course)
     {
-        if (!userCourses.get(name).contains(course))
+        if (!users.get(name).contains(course))
         {
             return false;
         }
-        userCourses.get(name).remove(course);
-        courseUsers.get(course).remove(name);
-        courses.get(course).unregister();
+        users.get(name).unregister(course);
+        courses.get(course).unregister(name);
         return true;
-    }
-
-    public Short[] studentStatus(String name)
-    {
-        Short[] studCourses = userCourses.get(name).toArray(new Short[0]);
-        return sort(studCourses);
     }
 
     private Short[] sort(Short[] toSort)
@@ -193,16 +177,28 @@ public class Database {
 
     public Short[] myCourses(String name)
     {
-        Short[] myCourses =  userCourses.get(name).toArray(new Short[0]);
+        Short[] myCourses =  users.get(name).getCourses().toArray(new Short[0]);
         return sort(myCourses);
     }
 
-    public String[] courseStatus(Short course)
+    public String courseStatus(Short num)
     {
-        String [] usersReg = courseUsers.get(course).toArray(new String[0]);
+        Course course = courses.get(num);
+        if (course == null)
+        {
+            return null;
+        }
+        String [] usersReg = course.getStudents().toArray(new String[0]);
         Arrays.sort(usersReg);
-        return usersReg;
+        String status = "Course: (" + num + ") " + course.getName() + "\nSeats Available: " +
+            course.getNumStudents() + "/" + course.getMaxStudents() + "\nStudents Registered: "
+            + Arrays.toString(usersReg);
+        return status;
     }
 
+    public Course getCourse(Short num)
+    {
+        return courses.get(num);
+    }
 
 }

@@ -1,15 +1,20 @@
 package bgu.spl.net.srv;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class User {
     private String name;
     private Type type;
     private String password;
+    private List<Short> courses;
 
     public User(String _name, Type _type, String _pass)
     {
         name = _name;
         type = _type;
         password = _pass;
+        courses = new LinkedList<>();
     }
 
     public String getName()
@@ -25,6 +30,26 @@ public class User {
     public String getPassword()
     {
         return password;
+    }
+
+    public void register(short num)
+    {
+        courses.add(num);
+    }
+
+    public boolean contains(short num)
+    {
+        return courses.contains(num);
+    }
+
+    public void unregister(short num)
+    {
+        courses.remove(num);
+    }
+
+    public List<Short> getCourses()
+    {
+        return courses;
     }
     
 }
