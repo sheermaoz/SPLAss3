@@ -3,7 +3,6 @@ package bgu.spl.net.impl.BGRSServer;
 import bgu.spl.net.Database;
 import bgu.spl.net.api.MessagingProtocol;
 import bgu.spl.net.srv.Messages.*;
-import bgu.spl.net.srv.Messages.Error;
 import bgu.spl.net.srv.User;
 
 public class BGRSServerProtocol implements MessagingProtocol<Message> {
@@ -30,7 +29,7 @@ public class BGRSServerProtocol implements MessagingProtocol<Message> {
 
         if (!success)
         {
-            return new Error(msg.getOpcode());
+            return new Err(msg.getOpcode());
         }
         return null;
     }

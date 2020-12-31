@@ -1,10 +1,12 @@
 package bgu.spl.net.srv.Messages;
 
-public class Error extends Message {
+public class Err extends Message {
 
     private short replyCode;
+
+    public Err(){ super((short)13); }
     
-    public Error(short _opcode)
+    public Err(short _opcode)
     {
         super((short)13);
         replyCode = _opcode;
