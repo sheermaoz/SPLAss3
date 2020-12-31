@@ -5,7 +5,7 @@ import bgu.spl.net.srv.User;
 public abstract class Message {
 
     short opcode;
-    String args;
+    String strCommand = null;
 
     public Message(short _opcode)
     {
@@ -18,12 +18,14 @@ public abstract class Message {
     }
 
 
-    public abstract void init(String str);
+    public void strInit(String input){
+        strCommand = input;
+    }
     
 
     public String getInit()
     {
-        return args;
+        return strCommand;
     }
 
     public abstract Object process(User usr);

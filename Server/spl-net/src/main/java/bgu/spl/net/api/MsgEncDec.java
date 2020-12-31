@@ -3,6 +3,7 @@ package bgu.spl.net.api;
 
 import bgu.spl.net.srv.Messages.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class MsgEncDec implements MessageEncoderDecoder<Message> {
@@ -12,30 +13,45 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
     private int len = 0;
     short op_code = 0;
     int zeroCount = 0;
+    int bytesAfterCode = 0;
 
     @Override
     public Message decodeNextByte(byte nextByte) {
-        if(len == 0) {
+        if(len == 0) {    //defining the op_code
             len++;
+            pushByte(nextByte);
             return null;
         }
         if(len == 1){
+            pushByte(nextByte);
             op_code = bytesToShort(bytes);
             return null;
         }
-        if(op_code == 1 | op_code == 2 | op_code == 3) {
-            if (nextByte == '0' && zeroCount == 1) {
-                pushByte(nextByte);    //including the '0' in the string
-                return popMsgTwoZeros();
-            }
+
+        if(op_code == 1 | op_code == 2 | op_code == 3) {   //commands includes 2 zeros
+            pushByte(nextByte);  //including the '0' in the string
+            if (nextByte == '0' && zeroCount == 1)
+                return popMsg();
+
             if (nextByte == '0'){
                 zeroCount++;
-                pushByte(nextByte);    //including the '0' in the string
                 return null;
             }
+            return null;
         }
 
-        pushByte(nextByte);
+        if(op_code == 4 | op_code == 11){  //no string commands
+            return popMsg();
+        }
+
+        if(op_code == 5 | op_code == 6 | op_code == 7 | op_code == 9 | op_code == 10){  //2 bytes commands
+            pushByte(nextByte);
+            bytesAfterCode++;
+            if(bytesAfterCode == 2)
+                return popMsg();
+            return null;
+        }
+
         return null;
     }
 
@@ -48,14 +64,14 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
     }
 
     private Message popMsg() {
+        String result = new String(bytes, 0, len, StandardCharsets.UTF_8);
+        retMsg.strInit(result);
         retMsg = defineMessage(op_code);
-        return null;
+
+        len = 0;
+        return retMsg;
     }
 
-    private Message popMsgTwoZeros() {
-        retMsg = defineMessage(op_code);
-        return null;
-    }
 
     private Message defineMessage(short op_code) {
         switch(op_code) {
@@ -81,8 +97,7 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
                 return new Unregister();
             case 11:
                 return new MyCourses();
-
-
+                
         }
         return null;
     }
