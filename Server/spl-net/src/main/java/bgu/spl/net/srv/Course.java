@@ -39,9 +39,14 @@ public class Course {
         return kdamCourses;
     }
 
-    public int getNumStudents()
+    public int getMaxStudents()
     {
         return maxStuds;
+    }
+
+    public int getNumStudents()
+    {
+        return numStuds;
     }
 
     public int getIndex()

@@ -20,7 +20,7 @@ public class IsRegistered extends Message {
 
     @Override
     public Boolean process(User usr) {
-        if (usr.getType() == Type.Admin)
+        if (usr == null || usr.getType() == Type.Admin)
         {
             return null;
         }

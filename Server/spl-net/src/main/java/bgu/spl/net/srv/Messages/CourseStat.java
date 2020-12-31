@@ -21,17 +21,12 @@ public class CourseStat extends Message {
 
     @Override
     public String process(User usr) {
-        if (usr.getType() == Type.User)
+        if (usr == null || usr.getType() == Type.User)
         {
             return null;
         }
         Database db = Database.getInstance();
-        Course course = db.getCourse(courseNum);
-        if (course == null)
-        {
-            return null;
-        }
-        return null;
+        return db.courseStatus(courseNum);
     }
     
 }

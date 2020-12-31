@@ -7,8 +7,6 @@ import bgu.spl.net.srv.CourseComparator;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -183,11 +181,19 @@ public class Database {
         return sort(myCourses);
     }
 
-    public String[] courseStatus(Short course)
+    public String courseStatus(Short num)
     {
-        String [] usersReg = courses.get(course).getStudents().toArray(new String[0]);
+        Course course = courses.get(num);
+        if (course == null)
+        {
+            return null;
+        }
+        String [] usersReg = course.getStudents().toArray(new String[0]);
         Arrays.sort(usersReg);
-        return usersReg;
+        String status = "Course: (" + num + ") " + course.getName() + "\nSeats Available: " +
+            course.getNumStudents() + "/" + course.getMaxStudents() + "\nStudents Registered: "
+            + Arrays.toString(usersReg);
+        return status;
     }
 
     public Course getCourse(Short num)
