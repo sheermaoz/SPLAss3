@@ -1,7 +1,6 @@
 package bgu.spl.net.srv.Messages;
 
 import bgu.spl.net.Database;
-import bgu.spl.net.srv.Course;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 

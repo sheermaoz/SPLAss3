@@ -15,7 +15,11 @@ public class Logout extends Message {
 
     @Override
     public Boolean process(User usr) {
-        return null;
+        if (usr == null)
+        {
+            return false;
+        }
+        return true;
     }
     
 }

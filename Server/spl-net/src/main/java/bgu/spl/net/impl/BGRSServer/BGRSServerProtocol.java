@@ -10,44 +10,64 @@ public class BGRSServerProtocol implements MessagingProtocol<Message> {
 
     private User user;
     private Database database;
+    private boolean terminate;
 
     public BGRSServerProtocol()
     {
         database = Database.getInstance();
+        user = null;
+        terminate = false;
     }
 
     public Message process(Message msg)
     {
-        boolean success = true;
-        if (user == null)
+        short opcode = msg.getOpcode();
+        Ack answer = new Ack(opcode);
+        Object response = msg.process(user);
+        
+        if (opcode == 4)
         {
-            if (msg.getOpcode() == 3)
+            terminate = (Boolean)response;
+            if (!terminate)
             {
-                if (user == null)
-                {
-                    success = false;
-                }
-            }
-            else if (msg.getOpcode() == 1)
-            {
-                success = true;
-            }
-            else if (msg.getOpcode() == 2)
-            {
-                success = true;
+               response = null;
             }
         }
 
-        if (!success)
+        if (response == null)
         {
-            return new Err(msg.getOpcode());
+            return new Err(opcode);
         }
-        return null;
+        
+
+        else if (opcode == 3)
+        {
+            user = (User)response;
+        }
+
+        else if (opcode == 9)
+        {
+            if ((Boolean)response == false)
+            {
+                answer.addArg("NOT REGISTERED");
+            }
+            else
+            {
+                answer.addArg("REGISTERED");
+            }
+        }
+
+        else if (opcode == 6 | opcode == 7 | opcode == 8 | opcode == 11)
+        {
+            answer.addArg((String)response);
+        }
+
+        return answer;
     }
 
     public boolean shouldTerminate()
     {
-        return false;
+        return terminate;
     }
     
 }
