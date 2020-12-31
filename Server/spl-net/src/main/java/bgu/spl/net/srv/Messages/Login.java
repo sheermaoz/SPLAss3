@@ -1,27 +1,12 @@
 package bgu.spl.net.srv.Messages;
 
-public class Login extends Message {
-
-    private String name;
-    private String password;
+public class Login extends Message<String> {
 
     public Login()  { super((short)3); }
 
     public Login(String _name, String _password)
     {
         super((short)3);
-        name = _name;
-        password = _password;
+        args = new String[2];
     }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-    
 }

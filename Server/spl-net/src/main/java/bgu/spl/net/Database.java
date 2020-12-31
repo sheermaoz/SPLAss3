@@ -3,13 +3,17 @@ package bgu.spl.net;
 import bgu.spl.net.srv.Course;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
+import bgu.spl.net.srv.CourseComparator;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
@@ -22,12 +26,16 @@ import java.util.Scanner;
  */
 public class Database {
 
-    private List<Course> courses;
-    private List<User> users;
+    private Map<Short, Course> courses;
+    private Map<String, User> users;
+    private Map<String, List<Short>> userCourses;
+    private Map<Short, List<String>> courseUsers;
     //to prevent user from creating new Database
     private Database() {
-        courses = new LinkedList<>();
-        users = new LinkedList<>();
+        courses = new ConcurrentHashMap<>();
+        users = new ConcurrentHashMap<>();
+        userCourses = new ConcurrentHashMap<>();
+        courseUsers = new ConcurrentHashMap<>();
     }
 
     private static class DatabaseHolder
@@ -51,15 +59,18 @@ public class Database {
         {
             File myFile = new File(coursesFilePath);
             Scanner reader = new Scanner(myFile);
+            int index = 0;
             while(reader.hasNextLine())
             {
                 String data = reader.nextLine();
                 String[] splitData = data.split("\\|");
                 short courseNum = Short.valueOf(splitData[0]);
                 String courseName = splitData[1];
-                short[] kdam = parseKdam(splitData[2]);
+                Short[] kdam = parseKdam(splitData[2]);
                 int studNum = Integer.valueOf(splitData[3]);
-                courses.add(new Course(courseNum, courseName, kdam, studNum));
+                courses.put(courseNum, new Course(courseNum, courseName, kdam, studNum, index));
+                courseUsers.put(courseNum, new LinkedList<>());
+                index++;
             }
             reader.close();
             return true;
@@ -71,14 +82,14 @@ public class Database {
         return false;
     }
 
-    private short[] parseKdam(String kdamCourse)
+    private Short[] parseKdam(String kdamCourse)
     {
         if (kdamCourse.equals("[]"))
         {
-            return new short [0];
+            return new Short [0];
         }
         String[] splitKdam = kdamCourse.substring(1, kdamCourse.length()-1).split(",");
-        short[] courses = new short[splitKdam.length];
+        Short[] courses = new Short[splitKdam.length];
         for (int i = 0; i < courses.length; i++)
         {
             
@@ -90,7 +101,7 @@ public class Database {
 
     public void print()
     {
-        for (Course course : courses)
+        for (Course course : courses.values())
         {
             System.out.println(course.getNum() + "|" + course.getName() + "|" + 
                 Arrays.toString(course.getKdam()) + "|" + course.getNumStudents());
@@ -99,17 +110,18 @@ public class Database {
 
     public boolean register(String name, Type type, String password)
     {
-        if (getUser(name) != null)
+        if (users.get(name) != null)
         {
             return false;
         }
-        users.add(new User(name, type, password));
+        users.put(name, new User(name, type, password));
+        userCourses.put(name, new LinkedList<>());
         return true;
     }
 
     public User login (String name, String password)
     {
-        User user = getUser(name);
+        User user = users.get(name);
         if (user == null)
         {
             return null;
@@ -121,41 +133,75 @@ public class Database {
         return null;
     }
 
-    
-    private User getUser(String name)
+    public boolean courseRegister(String name, short course)
     {
-        for (User user : users)
+        if (courses.get(course).register())
         {
-            if (user.getName().equals(name))
-            {
-                return user;
-            }
+            userCourses.get(name).add(course);
+            courseUsers.get(course).add(name);
         }
-        return null;
+        return false;
     }
 
-    private Course getCourse(String name)
+    public Short[] checkKdam(Short course)
     {
-        for (Course course : courses)
-        {
-            if (course.getName().equals(name))
-            {
-                return course;
-            }
-        }
-        return null;
+        Short[] kdam = courses.get(course).getKdam();
+        
+        return sort(kdam);
     }
 
-    private Course getCourse(short num)
+    public boolean isRegistered(String name, Short course)
     {
-        for (Course course : courses)
+        return userCourses.get(name).contains(course);
+    }
+
+    public boolean unregister(String name, Short course)
+    {
+        if (!userCourses.get(name).contains(course))
         {
-            if (course.getNum() == num)
-            {
-                return course;
-            }
+            return false;
         }
-        return null;
+        userCourses.get(name).remove(course);
+        courseUsers.get(course).remove(name);
+        courses.get(course).unregister();
+        return true;
+    }
+
+    public Short[] studentStatus(String name)
+    {
+        Short[] studCourses = userCourses.get(name).toArray(new Short[0]);
+        return sort(studCourses);
+    }
+
+    private Short[] sort(Short[] toSort)
+    {
+        Course[] temp = new Course[toSort.length];
+        Short[] sorted = new Short[toSort.length];
+        for (int i = 0 ; i < toSort.length; i++)
+        {
+            temp[i] = courses.get(toSort[i]);
+        }
+        Comparator<Course> comp = new CourseComparator();
+        Arrays.sort(temp, comp);
+        for (int i = 0 ; i < toSort.length; i++)
+        {
+            sorted[i] = temp[i].getNum();
+        }
+        return sorted;
+
+    }
+
+    public Short[] myCourses(String name)
+    {
+        Short[] myCourses =  userCourses.get(name).toArray(new Short[0]);
+        return sort(myCourses);
+    }
+
+    public String[] courseStatus(Short course)
+    {
+        String [] usersReg = courseUsers.get(course).toArray(new String[0]);
+        Arrays.sort(usersReg);
+        return usersReg;
     }
 
 

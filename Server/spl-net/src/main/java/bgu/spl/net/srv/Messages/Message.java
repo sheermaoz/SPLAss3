@@ -1,10 +1,10 @@
 package bgu.spl.net.srv.Messages;
 
 
-public abstract class Message {
+public abstract class Message<T> {
 
     short opcode;
-    String MsgBody;
+    T [] args;
 
     public Message(short _opcode)
     {
@@ -16,7 +16,8 @@ public abstract class Message {
         return opcode;
     }
 
-    public void initBody(byte[] bytes){
-
+    public T [] getArgs()
+    {
+        return args;
     }
 }
