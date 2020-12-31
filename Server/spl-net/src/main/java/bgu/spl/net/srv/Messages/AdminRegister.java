@@ -1,5 +1,9 @@
 package bgu.spl.net.srv.Messages;
 
+import bgu.spl.net.Database;
+import bgu.spl.net.srv.Type;
+import bgu.spl.net.srv.User;
+
 public class AdminRegister extends Message {
     
     private String username;
@@ -18,9 +22,14 @@ public class AdminRegister extends Message {
         password = args[1];
     }
 
-    public <T> T process(T args) {
-        // TODO Auto-generated method stub
-        return null;
+    @Override
+    public Boolean process(User user){
+        if (user != null)
+        {
+            return false;
+        }
+        Database db = Database.getInstance();
+        return db.register(username, Type.Admin, password);
     }
     
 }
