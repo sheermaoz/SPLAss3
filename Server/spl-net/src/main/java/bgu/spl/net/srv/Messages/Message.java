@@ -17,13 +17,13 @@ public abstract class Message {
     }
 
 
-    public void init(String str)
-    {
-        args = str;
-    }
+    public abstract void init(String str);
+    
 
     public String getInit()
     {
         return args;
     }
+
+    public abstract <T> T process(T args);
 }

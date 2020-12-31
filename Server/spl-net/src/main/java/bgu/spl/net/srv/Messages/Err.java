@@ -1,7 +1,7 @@
-package bgu.spl.net.srv.Messages;
+package bgu.spl.net.srv.Messages,*;
 
 
-public class Err extends Message {
+public class Err extends Response {
     
     public Err(short _opcode)
     {

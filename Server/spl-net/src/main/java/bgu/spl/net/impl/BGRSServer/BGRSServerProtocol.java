@@ -6,7 +6,7 @@ import bgu.spl.net.srv.Messages.*;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
-public class BGRSServerProtocol implements MessagingProtocol<Message<?>> {
+public class BGRSServerProtocol implements MessagingProtocol<Message> {
 
     private User user;
     private Database database;
@@ -16,14 +16,13 @@ public class BGRSServerProtocol implements MessagingProtocol<Message<?>> {
         database = Database.getInstance();
     }
 
-    public Message<Short> process(Message<?> msg)
+    public Message process(Message msg)
     {
         boolean success = true;
         if (user == null)
         {
             if (msg.getOpcode() == 3)
             {
-                user = database.login((String)msg.getArgs()[0], (String)msg.getArgs()[1]);
                 if (user == null)
                 {
                     success = false;
@@ -31,11 +30,11 @@ public class BGRSServerProtocol implements MessagingProtocol<Message<?>> {
             }
             else if (msg.getOpcode() == 1)
             {
-                success = database.register((String)msg.getArgs()[0], Type.Admin, (String)msg.getArgs()[1]);
+                success = true;
             }
             else if (msg.getOpcode() == 2)
             {
-                success = database.register((String)msg.getArgs()[0], Type.User, (String)msg.getArgs()[1]);
+                success = true;
             }
         }
 
