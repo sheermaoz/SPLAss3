@@ -1,13 +1,11 @@
 package bgu.spl.net.srv.Messages;
 
-import bgu.spl.net.srv.Course;
 
-public class MyCourses extends Message <Course> {
+public class MyCourses extends Message {
 
-    public MyCourses(Course[] courses)
+    public MyCourses()
     {
         super((short)11);
-        args = courses;
     }
     
 }

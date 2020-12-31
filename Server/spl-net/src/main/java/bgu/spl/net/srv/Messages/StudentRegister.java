@@ -1,13 +1,10 @@
 package bgu.spl.net.srv.Messages;
 
-public class StudentRegister extends Message<String> {
+public class StudentRegister extends Message {
 
-    public StudentRegister(String _name, String _pwd)
+    public StudentRegister()
     {
         super((short)2);
-        args = new String[2];
-        args[0] = _name;
-        args[1] = _pwd;
     }
     
 }
