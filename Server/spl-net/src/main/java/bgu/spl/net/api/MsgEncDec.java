@@ -1,11 +1,11 @@
 package bgu.spl.net.api;
 
+
 import bgu.spl.net.srv.Messages.*;
-import jdk.vm.ci.code.Register;
 
 import java.util.Arrays;
 
-public class MsgEncDec<Message> implements MessageEncoderDecoder<Message> {
+public class MsgEncDec implements MessageEncoderDecoder<Message<?>> {
 
     Message retMsg;
     private byte[] bytes = new byte[1 << 10]; //start with 1k
@@ -37,12 +37,14 @@ public class MsgEncDec<Message> implements MessageEncoderDecoder<Message> {
         return null;
     }
 
-    private Message defineMessage(short op_code) {
+    private Message<?> defineMessage(short op_code) {
         switch(op_code) {
             case 1:
-                return (Message)new AdminRegister();
+                Message<String> hello = new AdminRegister("", "");
+                hello.init("str");
+                hello.getInit();
             case 2:
-                return (Message)new StudentRegister();
+                return new StudentRegister();
             case 3:
                 return (Message)new Login();
             case 4:
