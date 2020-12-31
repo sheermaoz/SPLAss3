@@ -5,19 +5,35 @@ import bgu.spl.net.srv.Messages.*;
 
 import java.util.Arrays;
 
-public class MsgEncDec implements MessageEncoderDecoder<Message<?>> {
+public class MsgEncDec implements MessageEncoderDecoder<Message> {
 
     Message retMsg;
     private byte[] bytes = new byte[1 << 10]; //start with 1k
     private int len = 0;
+    short op_code = 0;
+    int zeroCount = 0;
 
     @Override
     public Message decodeNextByte(byte nextByte) {
-        if (nextByte == '\0') {
-            return popMsg();
+        if(len == 0) {
+            len++;
+            return null;
         }
-        retMsg=defineMessage(op_code);
-
+        if(len == 1){
+            op_code = bytesToShort(bytes);
+            return null;
+        }
+        if(op_code == 1 | op_code == 2 | op_code == 3) {
+            if (nextByte == '0' && zeroCount == 1) {
+                pushByte(nextByte);    //including the '0' in the string
+                return popMsgTwoZeros();
+            }
+            if (nextByte == '0'){
+                zeroCount++;
+                pushByte(nextByte);    //including the '0' in the string
+                return null;
+            }
+        }
 
         pushByte(nextByte);
         return null;
@@ -32,39 +48,39 @@ public class MsgEncDec implements MessageEncoderDecoder<Message<?>> {
     }
 
     private Message popMsg() {
-        short op_code = bytesToShort(bytes);
         retMsg = defineMessage(op_code);
         return null;
     }
 
-    private Message<?> defineMessage(short op_code) {
+    private Message popMsgTwoZeros() {
+        retMsg = defineMessage(op_code);
+        return null;
+    }
+
+    private Message defineMessage(short op_code) {
         switch(op_code) {
             case 1:
-                Message<String> hello = new AdminRegister("", "");
-                hello.init("str");
-                hello.getInit();
+                return new AdminRegister();
             case 2:
                 return new StudentRegister();
             case 3:
-                return (Message)new Login();
+                return new Login();
             case 4:
-                return (Message)new Logout();
+                return new Logout();
             case 5:
-                return (Message)new CourseReg();
+                return new CourseReg();
             case 6:
-                return (Message)new KdamCheck();
+                return new KdamCheck();
             case 7:
-                return (Message)new CourseStat();
+                return new CourseStat();
             case 8:
-                return (Message)new StudentStat();
+                return new StudentStat();
             case 9:
-                return (Message)new IsRegistered();
+                return new IsRegistered();
             case 10:
-                return (Message)new Unregister();
+                return new Unregister();
             case 11:
-                return (Message)new MyCourses();
-            case 12:
-                return (Message)new Ack();
+                return new MyCourses();
 
 
         }
