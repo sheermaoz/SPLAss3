@@ -32,11 +32,11 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
             pushByte(nextByte);  //including the '0' in the string
             if (nextByte == '0' && zeroCount == 1)
                 return popMsg();
-
             if (nextByte == '0'){
                 zeroCount++;
                 return null;
             }
+
             return null;
         }
 
@@ -64,9 +64,10 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
     }
 
     private Message popMsg() {
-        String result = new String(bytes, 0, len, StandardCharsets.UTF_8);
-        retMsg.strInit(result);
         retMsg = defineMessage(op_code);
+        String result = new String(bytes, 2, len, StandardCharsets.UTF_8);
+        retMsg.init(result);
+
 
         len = 0;
         return retMsg;
@@ -97,8 +98,8 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
                 return new Unregister();
             case 11:
                 return new MyCourses();
-                
         }
+
         return null;
     }
 

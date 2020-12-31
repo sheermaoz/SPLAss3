@@ -18,10 +18,8 @@ public abstract class Message {
     }
 
 
-    public void strInit(String input){
-        strCommand = input;
-    }
-    
+    public abstract void init(String input);
+
 
     public String getInit()
     {
