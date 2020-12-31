@@ -16,7 +16,7 @@ public class MsgEncDec<Message> implements MessageEncoderDecoder<Message> {
         if (nextByte == '\0') {
             return popMsg();
         }
-        short op_code=4;
+        retMsg=defineMessage(op_code);
 
 
         pushByte(nextByte);
@@ -33,9 +33,41 @@ public class MsgEncDec<Message> implements MessageEncoderDecoder<Message> {
 
     private Message popMsg() {
         short op_code = bytesToShort(bytes);
+        retMsg = defineMessage(op_code);
         return null;
     }
 
+    private Message defineMessage(short op_code) {
+        switch(op_code) {
+            case 1:
+                return (Message)new AdminRegister();
+            case 2:
+                return (Message)new StudentRegister();
+            case 3:
+                return (Message)new Login();
+            case 4:
+                return (Message)new Logout();
+            case 5:
+                return (Message)new CourseReg();
+            case 6:
+                return (Message)new KdamCheck();
+            case 7:
+                return (Message)new CourseStat();
+            case 8:
+                return (Message)new StudentStat();
+            case 9:
+                return (Message)new IsRegistered();
+            case 10:
+                return (Message)new Unregister();
+            case 11:
+                return (Message)new MyCourses();
+            case 12:
+                return (Message)new Ack();
+
+
+        }
+        return null;
+    }
 
     @Override
     public byte[] encode(Message message) {
