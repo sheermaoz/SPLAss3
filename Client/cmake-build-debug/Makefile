@@ -143,6 +143,168 @@ Client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
 .PHONY : Client/fast
 
+src/BGRSclient.o: src/BGRSclient.cpp.o
+
+.PHONY : src/BGRSclient.o
+
+# target to build an object file
+src/BGRSclient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/BGRSclient.cpp.o
+.PHONY : src/BGRSclient.cpp.o
+
+src/BGRSclient.i: src/BGRSclient.cpp.i
+
+.PHONY : src/BGRSclient.i
+
+# target to preprocess a source file
+src/BGRSclient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/BGRSclient.cpp.i
+.PHONY : src/BGRSclient.cpp.i
+
+src/BGRSclient.s: src/BGRSclient.cpp.s
+
+.PHONY : src/BGRSclient.s
+
+# target to generate assembly for a file
+src/BGRSclient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/BGRSclient.cpp.s
+.PHONY : src/BGRSclient.cpp.s
+
+src/MessageEncoderDecoder.o: src/MessageEncoderDecoder.cpp.o
+
+.PHONY : src/MessageEncoderDecoder.o
+
+# target to build an object file
+src/MessageEncoderDecoder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o
+.PHONY : src/MessageEncoderDecoder.cpp.o
+
+src/MessageEncoderDecoder.i: src/MessageEncoderDecoder.cpp.i
+
+.PHONY : src/MessageEncoderDecoder.i
+
+# target to preprocess a source file
+src/MessageEncoderDecoder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.i
+.PHONY : src/MessageEncoderDecoder.cpp.i
+
+src/MessageEncoderDecoder.s: src/MessageEncoderDecoder.cpp.s
+
+.PHONY : src/MessageEncoderDecoder.s
+
+# target to generate assembly for a file
+src/MessageEncoderDecoder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.s
+.PHONY : src/MessageEncoderDecoder.cpp.s
+
+src/MessageProtocol.o: src/MessageProtocol.cpp.o
+
+.PHONY : src/MessageProtocol.o
+
+# target to build an object file
+src/MessageProtocol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageProtocol.cpp.o
+.PHONY : src/MessageProtocol.cpp.o
+
+src/MessageProtocol.i: src/MessageProtocol.cpp.i
+
+.PHONY : src/MessageProtocol.i
+
+# target to preprocess a source file
+src/MessageProtocol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageProtocol.cpp.i
+.PHONY : src/MessageProtocol.cpp.i
+
+src/MessageProtocol.s: src/MessageProtocol.cpp.s
+
+.PHONY : src/MessageProtocol.s
+
+# target to generate assembly for a file
+src/MessageProtocol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageProtocol.cpp.s
+.PHONY : src/MessageProtocol.cpp.s
+
+src/ServerCom.o: src/ServerCom.cpp.o
+
+.PHONY : src/ServerCom.o
+
+# target to build an object file
+src/ServerCom.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/ServerCom.cpp.o
+.PHONY : src/ServerCom.cpp.o
+
+src/ServerCom.i: src/ServerCom.cpp.i
+
+.PHONY : src/ServerCom.i
+
+# target to preprocess a source file
+src/ServerCom.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/ServerCom.cpp.i
+.PHONY : src/ServerCom.cpp.i
+
+src/ServerCom.s: src/ServerCom.cpp.s
+
+.PHONY : src/ServerCom.s
+
+# target to generate assembly for a file
+src/ServerCom.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/ServerCom.cpp.s
+.PHONY : src/ServerCom.cpp.s
+
+src/Task.o: src/Task.cpp.o
+
+.PHONY : src/Task.o
+
+# target to build an object file
+src/Task.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Task.cpp.o
+.PHONY : src/Task.cpp.o
+
+src/Task.i: src/Task.cpp.i
+
+.PHONY : src/Task.i
+
+# target to preprocess a source file
+src/Task.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Task.cpp.i
+.PHONY : src/Task.cpp.i
+
+src/Task.s: src/Task.cpp.s
+
+.PHONY : src/Task.s
+
+# target to generate assembly for a file
+src/Task.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Task.cpp.s
+.PHONY : src/Task.cpp.s
+
+src/UserListener.o: src/UserListener.cpp.o
+
+.PHONY : src/UserListener.o
+
+# target to build an object file
+src/UserListener.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/UserListener.cpp.o
+.PHONY : src/UserListener.cpp.o
+
+src/UserListener.i: src/UserListener.cpp.i
+
+.PHONY : src/UserListener.i
+
+# target to preprocess a source file
+src/UserListener.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/UserListener.cpp.i
+.PHONY : src/UserListener.cpp.i
+
+src/UserListener.s: src/UserListener.cpp.s
+
+.PHONY : src/UserListener.s
+
+# target to generate assembly for a file
+src/UserListener.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/UserListener.cpp.s
+.PHONY : src/UserListener.cpp.s
+
 src/connectionHandler.o: src/connectionHandler.cpp.o
 
 .PHONY : src/connectionHandler.o
@@ -206,6 +368,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Client"
+	@echo "... src/BGRSclient.o"
+	@echo "... src/BGRSclient.i"
+	@echo "... src/BGRSclient.s"
+	@echo "... src/MessageEncoderDecoder.o"
+	@echo "... src/MessageEncoderDecoder.i"
+	@echo "... src/MessageEncoderDecoder.s"
+	@echo "... src/MessageProtocol.o"
+	@echo "... src/MessageProtocol.i"
+	@echo "... src/MessageProtocol.s"
+	@echo "... src/ServerCom.o"
+	@echo "... src/ServerCom.i"
+	@echo "... src/ServerCom.s"
+	@echo "... src/Task.o"
+	@echo "... src/Task.i"
+	@echo "... src/Task.s"
+	@echo "... src/UserListener.o"
+	@echo "... src/UserListener.i"
+	@echo "... src/UserListener.s"
 	@echo "... src/connectionHandler.o"
 	@echo "... src/connectionHandler.i"
 	@echo "... src/connectionHandler.s"

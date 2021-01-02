@@ -86,7 +86,43 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/spl211/SPLAss3/Client/include/BGRSclient.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/include/MessageEncoderDecoder.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/include/MessageProtocol.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/include/Task.h">
+			<Option target="Client"/>
+		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/include/connectionHandler.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/BGRSclient.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/MessageProtocol.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/ServerCom.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/ServerCom.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/Task.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/UserListener.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/src/UserListener.h">
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/src/connectionHandler.cpp">

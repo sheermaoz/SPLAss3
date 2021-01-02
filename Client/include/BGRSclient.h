@@ -1,0 +1,10 @@
+#ifndef ECHOCLIENT_CPP_BGRSCLIENT_H
+#define ECHOCLIENT_CPP_BGRSCLIENT_H
+
+
+class BGRSclient {
+
+};
+
+
+#endif //ECHOCLIENT_CPP_BGRSCLIENT_H

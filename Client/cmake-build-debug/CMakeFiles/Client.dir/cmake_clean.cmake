@@ -1,4 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Client.dir/src/BGRSclient.cpp.o"
+  "CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o"
+  "CMakeFiles/Client.dir/src/MessageProtocol.cpp.o"
+  "CMakeFiles/Client.dir/src/ServerCom.cpp.o"
+  "CMakeFiles/Client.dir/src/Task.cpp.o"
+  "CMakeFiles/Client.dir/src/UserListener.cpp.o"
   "CMakeFiles/Client.dir/src/connectionHandler.cpp.o"
   "CMakeFiles/Client.dir/src/echoClient.cpp.o"
   "Client"

@@ -6,21 +6,21 @@
 
 #IncludeRegexTransform: 
 
-../include/connectionHandler.h
-string
--
+../include/Task.h
 iostream
 -
-boost/asio.hpp
+mutex
+-
+thread
 -
 
-/home/spl211/SPLAss3/Client/src/connectionHandler.cpp
-connectionHandler.h
+/home/spl211/SPLAss3/Client/src/Task.cpp
+Task.h
+/home/spl211/SPLAss3/Client/src/Task.h
+iostream
 -
-
-/home/spl211/SPLAss3/Client/src/echoClient.cpp
-stdlib.h
+mutex
 -
-connectionHandler.h
+thread
 -
 
