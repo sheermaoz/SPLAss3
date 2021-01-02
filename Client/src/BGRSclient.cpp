@@ -5,8 +5,8 @@
 #include <iostream>
 #include <mutex>
 #include <thread>
-#include "Task.h"
-
+#include <ServerCom.h>
+#include <UserListener.h>
 using namespace std;
 /**
 * This code assumes that the server replies the exact text the client sent it (as opposed to the practical session example)
@@ -20,18 +20,18 @@ int main (int argc, char *argv[]) {
     std::string host = argv[1];
     short port = atoi(argv[2]);
 
-    /*ConnectionHandler connectionHandler(host, port);
-    if (!connectionHandler.connect()) {
+    ConnectionHandler connectionHandler(host, port);
+    /*if (!connectionHandler.connect()) {
         std::cerr << "Cannot connect to " << host << ":" << port << std::endl;
         return 1;
     }*/
 
     mutex mutex;
-    Task task1(1, mutex);
-    Task task2(2, mutex);
+    ServerCom serverCom(mutex, connectionHandler);
+    UserListener userListener(mutex, connectionHandler);
 
-    thread th1(&Task::run, &task1);
-    thread th2(& Task::run, &task2);
+    thread th1(&ServerCom::run, &serverCom);
+    thread th2(&UserListener::run, &userListener);
 
     th1.join();
     th2.join();

@@ -1,13 +1,23 @@
-//
-// Created by spl211 on 02/01/2021.
-//
-
 #ifndef ECHOCLIENT_CPP_USERLISTENER_H
 #define ECHOCLIENT_CPP_USERLISTENER_H
 
+#include <connectionHandler.h>
+using namespace std;
+#include <iostream>
+#include <mutex>
+#include <thread>
 
 class UserListener {
+private:
+    ConnectionHandler &_handler;
+    mutex &_mutex;
+    bool shouldTerminate = true;
 
+public:
+    UserListener(mutex &_mutex, ConnectionHandler &handler);
+    void run();
+    void Terminate();
+};
 };
 
 

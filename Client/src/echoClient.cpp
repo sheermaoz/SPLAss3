@@ -4,7 +4,6 @@
 /**
 * This code assumes that the server replies the exact text the client sent it (as opposed to the practical session example)
 */
-/*
 int main (int argc, char *argv[]) {
     if (argc < 3) {
         std::cerr << "Usage: " << argv[0] << " host port" << std::endl << std::endl;
@@ -26,11 +25,11 @@ int main (int argc, char *argv[]) {
         std::cin.getline(buf, bufsize);
 		std::string line(buf);
 		int len=line.length();
-        if (!connectionHandler.sendLine(line)) {
+        if (!connectionHandler.sendLine(line)) {     //sending to the socket
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
-		// connectionHandler.sendLine(line) appends '\n' to the message. Therefore we send len+1 bytes.
+		// ***connectionHandler.sendLine(line) appends '\n' to the message.*** Therefore we send len+1 bytes.
         std::cout << "Sent " << len+1 << " bytes to server" << std::endl;
 
  
@@ -58,4 +57,3 @@ int main (int argc, char *argv[]) {
     }
     return 0;
 }
-*/
