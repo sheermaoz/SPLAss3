@@ -251,33 +251,6 @@ src/ServerCom.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/ServerCom.cpp.s
 .PHONY : src/ServerCom.cpp.s
 
-src/Task.o: src/Task.cpp.o
-
-.PHONY : src/Task.o
-
-# target to build an object file
-src/Task.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Task.cpp.o
-.PHONY : src/Task.cpp.o
-
-src/Task.i: src/Task.cpp.i
-
-.PHONY : src/Task.i
-
-# target to preprocess a source file
-src/Task.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Task.cpp.i
-.PHONY : src/Task.cpp.i
-
-src/Task.s: src/Task.cpp.s
-
-.PHONY : src/Task.s
-
-# target to generate assembly for a file
-src/Task.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Task.cpp.s
-.PHONY : src/Task.cpp.s
-
 src/UserListener.o: src/UserListener.cpp.o
 
 .PHONY : src/UserListener.o
@@ -380,9 +353,6 @@ help:
 	@echo "... src/ServerCom.o"
 	@echo "... src/ServerCom.i"
 	@echo "... src/ServerCom.s"
-	@echo "... src/Task.o"
-	@echo "... src/Task.i"
-	@echo "... src/Task.s"
 	@echo "... src/UserListener.o"
 	@echo "... src/UserListener.i"
 	@echo "... src/UserListener.s"

@@ -1,6 +1,7 @@
-package bgu.spl.net.api;
+package bgu.spl.net.impl.BGRSServer;
 
 
+import bgu.spl.net.api.MessageEncoderDecoder;
 import bgu.spl.net.srv.Messages.*;
 
 import java.nio.charset.StandardCharsets;
@@ -30,9 +31,9 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
 
         if(op_code == 1 | op_code == 2 | op_code == 3) {   //commands includes 2 zeros
             pushByte(nextByte);  //including the '0' in the string
-            if (nextByte == '0' && zeroCount == 1)
+            if (nextByte == '\0' && zeroCount == 1)
                 return popMsg();
-            if (nextByte == '0'){
+            if (nextByte == '\0'){
                 zeroCount++;
                 return null;
             }
@@ -67,7 +68,6 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
         retMsg = defineMessage(op_code);
         String result = new String(bytes, 2, len, StandardCharsets.UTF_8);
         retMsg.init(result);
-
 
         len = 0;
         return retMsg;

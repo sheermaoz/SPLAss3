@@ -4,6 +4,10 @@
 #include <string>
 #include <iostream>
 #include <boost/asio.hpp>
+#include <MessageEncoderDecoder.h>
+#include <MessageProtocol.h>
+
+using namespace std;
 
 using boost::asio::ip::tcp;
 
@@ -12,7 +16,9 @@ private:
 	const std::string host_;
 	const short port_;
 	boost::asio::io_service io_service_;   // Provides core I/O functionality
-	tcp::socket socket_; 
+	tcp::socket socket_;
+	MessageEncoderDecoder EncDec;
+	MessageProtocol protocol;
  
 public:
     ConnectionHandler(std::string host, short port);
@@ -47,6 +53,16 @@ public:
 	
     // Close down the connection properly.
     void close();
+
+    char* Enc(std::string arg){};
+
+    char* EncShort(short op);
+
+    string Dec(char* byteArr);
+
+    short bytesToShort(char* bytesArr);
+
+    void shortToBytes(short num, char* bytesArr);
 
 }; //class ConnectionHandler
  

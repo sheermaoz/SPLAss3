@@ -95,7 +95,10 @@
 		<Unit filename="/home/spl211/SPLAss3/Client/include/MessageProtocol.h">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/include/Task.h">
+		<Unit filename="/home/spl211/SPLAss3/Client/include/ServerCom.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/SPLAss3/Client/include/UserListener.h">
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/include/connectionHandler.h">
@@ -113,16 +116,7 @@
 		<Unit filename="/home/spl211/SPLAss3/Client/src/ServerCom.cpp">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/src/ServerCom.h">
-			<Option target="Client"/>
-		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/src/Task.cpp">
-			<Option target="Client"/>
-		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/src/UserListener.cpp">
-			<Option target="Client"/>
-		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/src/UserListener.h">
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/src/connectionHandler.cpp">

@@ -18,7 +18,7 @@ public:
     void run();
     void Terminate();
 };
-};
+
 
 
 #endif //ECHOCLIENT_CPP_USERLISTENER_H

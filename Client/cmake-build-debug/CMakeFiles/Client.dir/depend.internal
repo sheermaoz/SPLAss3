@@ -3,7 +3,10 @@
 
 CMakeFiles/Client.dir/src/BGRSclient.cpp.o
  ../include/BGRSclient.h
- ../include/Task.h
+ ../include/MessageEncoderDecoder.h
+ ../include/MessageProtocol.h
+ ../include/ServerCom.h
+ ../include/UserListener.h
  ../include/connectionHandler.h
  /home/spl211/SPLAss3/Client/src/BGRSclient.cpp
 CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o
@@ -12,12 +15,25 @@ CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o
 CMakeFiles/Client.dir/src/MessageProtocol.cpp.o
  ../include/MessageProtocol.h
  /home/spl211/SPLAss3/Client/src/MessageProtocol.cpp
-CMakeFiles/Client.dir/src/Task.cpp.o
- ../include/Task.h
- /home/spl211/SPLAss3/Client/src/Task.cpp
+CMakeFiles/Client.dir/src/ServerCom.cpp.o
+ ../include/MessageEncoderDecoder.h
+ ../include/MessageProtocol.h
+ ../include/ServerCom.h
+ ../include/connectionHandler.h
+ /home/spl211/SPLAss3/Client/src/ServerCom.cpp
+CMakeFiles/Client.dir/src/UserListener.cpp.o
+ ../include/MessageEncoderDecoder.h
+ ../include/MessageProtocol.h
+ ../include/UserListener.h
+ ../include/connectionHandler.h
+ /home/spl211/SPLAss3/Client/src/UserListener.cpp
 CMakeFiles/Client.dir/src/connectionHandler.cpp.o
+ ../include/MessageEncoderDecoder.h
+ ../include/MessageProtocol.h
  ../include/connectionHandler.h
  /home/spl211/SPLAss3/Client/src/connectionHandler.cpp
 CMakeFiles/Client.dir/src/echoClient.cpp.o
+ ../include/MessageEncoderDecoder.h
+ ../include/MessageProtocol.h
  ../include/connectionHandler.h
  /home/spl211/SPLAss3/Client/src/echoClient.cpp

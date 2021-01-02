@@ -7,6 +7,7 @@ using std::cout;
 using std::cerr;
 using std::endl;
 using std::string;
+using namespace std;
  
 ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_){}
     
@@ -107,3 +108,4 @@ void ConnectionHandler::close() {
         std::cout << "closing failed: connection already closed" << std::endl;
     }
 }
+
