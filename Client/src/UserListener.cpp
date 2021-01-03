@@ -13,7 +13,7 @@ void UserListener::run() {
         int len = line.length();
         bool flag = false;
 
-        if(line == "LOGOUT")
+        if(line == "LOGOUT")   //for termination terms
             flag = true;
 
         //encoding
