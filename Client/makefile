@@ -6,12 +6,12 @@ all: BGRSclient
 
 #add more dependencies files of the main (practicly every thing else)
 
-BGRSclient: bin/connectionHandler.o bin/BGRSClient.o bin/Message.o  bin/MessageEncoderDecoder.o bin/ServerCom.o bin/UserListener.o
+BGRSclient: bin/connectionHandler.o bin/BGRSclient.o bin/Message.o  bin/MessageEncoderDecoder.o bin/ServerCom.o bin/UserListener.o
 
 	@echo 'Building target: BGRSclient'
 	@echo 'Invoking: C++ Linker'
 #Building and linking (add all object (.o) files)    
-	$(CC) -o bin/BGRSclient  bin/connectionHandler.o bin/BGRSClient.o bin/Message.o  bin/MessageEncoderDecoder.o bin/ServerCom.o bin/UserListener.o $(LDFLAGS) #add dependencies .o files for linking !Before $(LDFLAGS)
+	$(CC) -o bin/BGRSclient  bin/connectionHandler.o bin/BGRSclient.o bin/Message.o  bin/MessageEncoderDecoder.o bin/ServerCom.o bin/UserListener.o $(LDFLAGS) #add dependencies .o files for linking !Before $(LDFLAGS)
 	@echo 'Finishing building target: BGRSclient'
 	@echo ' '
 
@@ -19,9 +19,9 @@ bin/connectionHandler.o: src/connectionHandler.cpp
 	$(CC) $(CFLAGS) -o bin/connectionHandler.o src/connectionHandler.cpp
 	@echo 'Building .o from connectionHandler'
 
-bin/BGRSClient.o: src/BGRSClient.cpp
-	$(CC) $(CFLAGS) -o bin/BGRSClient.o src/BGRSClient.cpp
-	@echo 'Building .o from BGRSClient'
+bin/BGRSclient.o: src/BGRSclient.cpp
+	$(CC) $(CFLAGS) -o bin/BGRSclient.o src/BGRSclient.cpp
+	@echo 'Building .o from BGRSclient'
 
 bin/Message.o: src/Message.cpp
 	$(CC) $(CFLAGS) -o bin/Message.o src/Message.cpp
