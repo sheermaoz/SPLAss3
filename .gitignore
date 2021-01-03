@@ -6,3 +6,4 @@ target/
 .idea/
 *.tar.gz
 spl-net.iml
+*/bin/
