@@ -18,27 +18,17 @@ string
 Message.h
 -
 
-../include/ServerCom.h
-connectionHandler.h
--
-iostream
--
-mutex
--
-thread
--
-
-../include/connectionHandler.h
+/home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.cpp
+MessageEncoderDecoder.h
+/home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.h
 string
 -
 iostream
 -
-boost/asio.hpp
+boost/algorithm/string.hpp
 -
-MessageEncoderDecoder.h
+vector
 -
-
-/home/spl211/SPLAss3/Client/src/ServerCom.cpp
-ServerCom.h
-/home/spl211/SPLAss3/Client/src/ServerCom.h
+boost/lexical_cast.hpp
+-
 

@@ -6,13 +6,13 @@ UserListener::UserListener(mutex &_mutex, ConnectionHandler &handler): _mutex(_m
 
 void UserListener::run() {
     while (!shouldTerminate) {
+        cout<<"starting2"<<endl;
         const short bufsize = 1024;
         char buf[bufsize];
         std::cin.getline(buf, bufsize);
         std::string line(buf);
-        int len = line.length();
-        bool flag = false;
 
+        bool flag = false;
         if(line == "LOGOUT")   //for termination terms
             flag = true;
 
@@ -43,6 +43,7 @@ void UserListener::run() {
                 shouldTerminate = true;
 
         if(toSend.op_code >= 5 && toSend.op_code <=10 && toSend.op_code!=8){
+            cout<<"sending "<<toSend.shortAns<<endl;
             if(!sendOp(toSend))
                 break;
             if(!sendShortAns(toSend))

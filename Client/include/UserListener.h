@@ -12,7 +12,7 @@ class UserListener {
 private:
     ConnectionHandler &_handler;
     mutex &_mutex;
-    bool shouldTerminate = true;
+    bool shouldTerminate = false;
 
 public:
     UserListener(mutex &_mutex, ConnectionHandler &handler);

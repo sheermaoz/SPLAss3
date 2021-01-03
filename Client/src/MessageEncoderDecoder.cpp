@@ -80,7 +80,9 @@ Message MessageEncoderDecoder::type2(short op, vector<string> splittedArg){
         myShort = boost::lexical_cast<short>(splittedArg[1]);
     }
     catch(boost::bad_lexical_cast &) {}
+    cout<<"myShort: "<<myShort<<endl;
     shortToBytes(myShort, shortAns);
+    cout<<"shortAns "<<shortAns[0]<<endl;
 
     Message retMsg = Message(*opByte, 7, shortAns);
     return retMsg;

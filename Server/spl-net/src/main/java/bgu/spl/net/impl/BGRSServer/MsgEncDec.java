@@ -18,7 +18,6 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
 
     @Override
     public Message decodeNextByte(byte nextByte) {
-        System.out.println(nextByte);
         if(len == 0) {    //defining the op_code
             pushByte(nextByte);
             return null;
@@ -68,6 +67,8 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
         String result = new String(bytes, 2, len, StandardCharsets.UTF_8);
         retMsg = defineMessage(op_code, result );
         len = 0;
+        zeroCount = 0;
+        bytesAfterCode = 0;
         return retMsg;
     }
 

@@ -38,7 +38,6 @@ int main (int argc, char *argv[]) {
 
     thread th1(&ServerCom::run, &serverCom);
     thread th2(&UserListener::run, &userListener);
-
     th1.join();
     th2.join();
 
