@@ -1,8 +1,6 @@
 package bgu.spl.net.srv.Messages;
 
 import java.util.Arrays;
-
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
@@ -12,10 +10,6 @@ public class MyCourses extends Message {
         super((short) 11);
     }
 
-    @Override
-    public void init(String str) {
-
-    }
 
     @Override
     public String process(User usr) {
@@ -23,7 +17,6 @@ public class MyCourses extends Message {
         {
             return null;
         }
-        Database db = Database.getInstance();
         return Arrays.toString(db.myCourses(usr.getName()));
     }
     

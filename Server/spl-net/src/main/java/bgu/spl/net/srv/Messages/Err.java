@@ -13,13 +13,7 @@ public class Err extends Message {
 
     @Override
     public String toString() {
-        return ""  + resp;
-    }
-
-    @Override
-    public void init(String str) {
-        resp = Short.valueOf(str);
-
+        return "ERR "  + resp;
     }
 
     @Override

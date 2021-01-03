@@ -17,13 +17,7 @@ public class Ack extends Message {
     }
 
     public String toString() {
-        return ""  + resp + args + "\0";
-    }
-
-    @Override
-    public void init(String str) {
-       resp = Short.valueOf(str);
-
+        return "ACK "  + resp + args + "\0";
     }
 
     @Override

@@ -2,7 +2,6 @@ package bgu.spl.net.srv.Messages;
 
 import java.util.Arrays;
 
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
@@ -10,15 +9,11 @@ public class KdamCheck extends Message {
 
     private short courseNum;
     
-    public KdamCheck() {
+    public KdamCheck(String _num) {
         super((short) 6);
+        courseNum = Short.valueOf(_num);
     }
 
-    @Override
-    public void init(String str) {
-       courseNum = Short.valueOf(str);
-
-    }
 
     @Override
     public String process(User usr) {
@@ -26,7 +21,6 @@ public class KdamCheck extends Message {
         {
             return null;
         }
-        Database db = Database.getInstance();
         return Arrays.toString(db.checkKdam(courseNum));
     }
     

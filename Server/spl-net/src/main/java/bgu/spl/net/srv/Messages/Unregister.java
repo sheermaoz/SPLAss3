@@ -1,6 +1,5 @@
 package bgu.spl.net.srv.Messages;
 
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
@@ -8,14 +7,9 @@ public class Unregister extends Message {
 
     private short courseNum;
 
-    public Unregister() {
+    public Unregister(String _num) {
         super((short) 10);
-    }
-
-    @Override
-    public void init(String str) {
-        courseNum = Short.valueOf(str);
-
+        courseNum = Short.valueOf(_num);
     }
 
     @Override
@@ -24,7 +18,6 @@ public class Unregister extends Message {
         {
             return null;
         }
-        Database db = Database.getInstance();
         return db.unregister(usr.getName(), courseNum);
     }
     
