@@ -11,8 +11,9 @@ public:
     string password;
     string arg;
     char* opByte;
-    short op_code;
     char* shortAns;
+    short op_code;
+
 
     Message(string username,string password, char& opByte, short op_code);
     Message(char& opByte, short op_code);

@@ -122,9 +122,6 @@
 		<Unit filename="/home/spl211/SPLAss3/Client/src/connectionHandler.cpp">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/src/echoClient.cpp">
-			<Option target="Client"/>
-		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

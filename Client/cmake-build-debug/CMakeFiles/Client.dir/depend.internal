@@ -33,8 +33,3 @@ CMakeFiles/Client.dir/src/connectionHandler.cpp.o
  ../include/MessageEncoderDecoder.h
  ../include/connectionHandler.h
  /home/spl211/SPLAss3/Client/src/connectionHandler.cpp
-CMakeFiles/Client.dir/src/echoClient.cpp.o
- ../include/Message.h
- ../include/MessageEncoderDecoder.h
- ../include/connectionHandler.h
- /home/spl211/SPLAss3/Client/src/echoClient.cpp
