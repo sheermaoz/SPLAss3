@@ -6,7 +6,6 @@ UserListener::UserListener(mutex &_mutex, ConnectionHandler &handler): _mutex(_m
 
 void UserListener::run() {
     while (!shouldTerminate) {
-        cout<<"starting2"<<endl;
         const short bufsize = 1024;
         char buf[bufsize];
         std::cin.getline(buf, bufsize);
@@ -43,7 +42,6 @@ void UserListener::run() {
                 shouldTerminate = true;
 
         if(toSend.op_code >= 5 && toSend.op_code <=10 && toSend.op_code!=8){
-            cout<<"sending "<<toSend.shortAns<<endl;
             if(!sendOp(toSend))
                 break;
             if(!sendShortAns(toSend))

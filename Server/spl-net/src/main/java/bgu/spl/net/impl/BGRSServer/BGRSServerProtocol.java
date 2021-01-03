@@ -45,17 +45,17 @@ public class BGRSServerProtocol implements MessagingProtocol<Message> {
         {
             if ((Boolean)response == false)
             {
-                answer.addArg("NOT REGISTERED");
+                answer.addArg("\nNOT REGISTERED");
             }
             else
             {
-                answer.addArg("REGISTERED");
+                answer.addArg("\nREGISTERED");
             }
         }
 
         else if (opcode == 6 | opcode == 7 | opcode == 8 | opcode == 11)
         {
-            answer.addArg((String)response);
+            answer.addArg("\n"+(String)response);
         }
 
         return answer;

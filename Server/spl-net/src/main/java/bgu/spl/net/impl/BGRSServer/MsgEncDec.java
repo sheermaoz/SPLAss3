@@ -25,6 +25,9 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
         if(len == 1){
             pushByte(nextByte);
             op_code = bytesToShort(bytes);
+            if(op_code == 4 | op_code == 11){  //no string commands
+                return popMsg();
+            }
             return null;
         }
 
@@ -40,9 +43,7 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
             return null;
         }
 
-        if(op_code == 4 | op_code == 11){  //no string commands
-            return popMsg();
-        }
+        
 
         if(op_code == 5 | op_code == 6 | op_code == 7 | op_code == 9 | op_code == 10){  //2 bytes commands
             pushByte(nextByte);
@@ -64,7 +65,14 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
     }
 
     private Message popMsg() {
-        String result = new String(bytes, 2, len, StandardCharsets.UTF_8);
+        String result;
+        if(op_code == 5 | op_code == 6 | op_code == 7 | op_code == 9 | op_code == 10){  //2 bytes commands
+            result = Short.toString(bytesToShort(Arrays.copyOfRange(bytes, 2, 5)));
+        }
+        else
+        {
+            result = new String(bytes, 2, len, StandardCharsets.UTF_8);
+        }
         retMsg = defineMessage(op_code, result );
         len = 0;
         zeroCount = 0;

@@ -9,7 +9,6 @@ ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _mutex(_mutex),
 
 void ServerCom::run() {
     while(!shouldTerminate){
-        cout<<"starting1"<<endl;
         std::string answer;
         if (!_handler.getLine(answer)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;

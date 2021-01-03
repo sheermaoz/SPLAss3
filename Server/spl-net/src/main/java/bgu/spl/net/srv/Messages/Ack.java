@@ -10,6 +10,7 @@ public class Ack extends Message {
     public Ack(short _resp) {
         super((short) 12);
         resp = _resp;
+        args = "";
     }
 
     public void addArg(String arg) {
