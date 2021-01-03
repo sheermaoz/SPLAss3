@@ -90,22 +90,9 @@ CMakeFiles/Client.dir/src/connectionHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/src/connectionHandler.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/spl211/SPLAss3/Client/src/connectionHandler.cpp -o CMakeFiles/Client.dir/src/connectionHandler.cpp.s
 
-CMakeFiles/Client.dir/src/echoClient.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/src/echoClient.cpp.o: ../src/echoClient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/src/echoClient.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/src/echoClient.cpp.o -c /home/spl211/SPLAss3/Client/src/echoClient.cpp
-
-CMakeFiles/Client.dir/src/echoClient.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/src/echoClient.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/spl211/SPLAss3/Client/src/echoClient.cpp > CMakeFiles/Client.dir/src/echoClient.cpp.i
-
-CMakeFiles/Client.dir/src/echoClient.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/src/echoClient.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/spl211/SPLAss3/Client/src/echoClient.cpp -o CMakeFiles/Client.dir/src/echoClient.cpp.s
-
 CMakeFiles/Client.dir/src/BGRSclient.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/BGRSclient.cpp.o: ../src/BGRSclient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Client.dir/src/BGRSclient.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/src/BGRSclient.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/src/BGRSclient.cpp.o -c /home/spl211/SPLAss3/Client/src/BGRSclient.cpp
 
 CMakeFiles/Client.dir/src/BGRSclient.cpp.i: cmake_force
@@ -118,7 +105,7 @@ CMakeFiles/Client.dir/src/BGRSclient.cpp.s: cmake_force
 
 CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o: ../src/MessageEncoderDecoder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o -c /home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.cpp
 
 CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.i: cmake_force
@@ -131,7 +118,7 @@ CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.s: cmake_force
 
 CMakeFiles/Client.dir/src/UserListener.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/UserListener.cpp.o: ../src/UserListener.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Client.dir/src/UserListener.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Client.dir/src/UserListener.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/src/UserListener.cpp.o -c /home/spl211/SPLAss3/Client/src/UserListener.cpp
 
 CMakeFiles/Client.dir/src/UserListener.cpp.i: cmake_force
@@ -144,7 +131,7 @@ CMakeFiles/Client.dir/src/UserListener.cpp.s: cmake_force
 
 CMakeFiles/Client.dir/src/ServerCom.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/ServerCom.cpp.o: ../src/ServerCom.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Client.dir/src/ServerCom.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Client.dir/src/ServerCom.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/src/ServerCom.cpp.o -c /home/spl211/SPLAss3/Client/src/ServerCom.cpp
 
 CMakeFiles/Client.dir/src/ServerCom.cpp.i: cmake_force
@@ -157,7 +144,7 @@ CMakeFiles/Client.dir/src/ServerCom.cpp.s: cmake_force
 
 CMakeFiles/Client.dir/src/Message.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/Message.cpp.o: ../src/Message.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Client.dir/src/Message.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Client.dir/src/Message.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/src/Message.cpp.o -c /home/spl211/SPLAss3/Client/src/Message.cpp
 
 CMakeFiles/Client.dir/src/Message.cpp.i: cmake_force
@@ -171,7 +158,6 @@ CMakeFiles/Client.dir/src/Message.cpp.s: cmake_force
 # Object files for target Client
 Client_OBJECTS = \
 "CMakeFiles/Client.dir/src/connectionHandler.cpp.o" \
-"CMakeFiles/Client.dir/src/echoClient.cpp.o" \
 "CMakeFiles/Client.dir/src/BGRSclient.cpp.o" \
 "CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o" \
 "CMakeFiles/Client.dir/src/UserListener.cpp.o" \
@@ -182,7 +168,6 @@ Client_OBJECTS = \
 Client_EXTERNAL_OBJECTS =
 
 Client: CMakeFiles/Client.dir/src/connectionHandler.cpp.o
-Client: CMakeFiles/Client.dir/src/echoClient.cpp.o
 Client: CMakeFiles/Client.dir/src/BGRSclient.cpp.o
 Client: CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.o
 Client: CMakeFiles/Client.dir/src/UserListener.cpp.o
@@ -190,7 +175,7 @@ Client: CMakeFiles/Client.dir/src/ServerCom.cpp.o
 Client: CMakeFiles/Client.dir/src/Message.cpp.o
 Client: CMakeFiles/Client.dir/build.make
 Client: CMakeFiles/Client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/spl211/SPLAss3/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

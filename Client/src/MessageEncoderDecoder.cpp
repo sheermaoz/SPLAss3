@@ -84,7 +84,7 @@ Message MessageEncoderDecoder::type2(short op, vector<string> splittedArg){
     shortToBytes(myShort, shortAns);
     cout<<"shortAns "<<shortAns[0]<<endl;
 
-    Message retMsg = Message(*opByte, 7, shortAns);
+    Message retMsg = Message(*opByte, 7, *shortAns);
     return retMsg;
 }
 

@@ -33,8 +33,3 @@ CMakeFiles/Client.dir/src/connectionHandler.cpp.o: ../include/MessageEncoderDeco
 CMakeFiles/Client.dir/src/connectionHandler.cpp.o: ../include/connectionHandler.h
 CMakeFiles/Client.dir/src/connectionHandler.cpp.o: ../src/connectionHandler.cpp
 
-CMakeFiles/Client.dir/src/echoClient.cpp.o: ../include/Message.h
-CMakeFiles/Client.dir/src/echoClient.cpp.o: ../include/MessageEncoderDecoder.h
-CMakeFiles/Client.dir/src/echoClient.cpp.o: ../include/connectionHandler.h
-CMakeFiles/Client.dir/src/echoClient.cpp.o: ../src/echoClient.cpp
-
