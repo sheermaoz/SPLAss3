@@ -9,15 +9,11 @@ public class StudentStat extends Message {
 
     private String name;
 
-    public StudentStat() {
+    public StudentStat(String _name) {
         super((short) 8);
+        name = _name;
     }
 
-    @Override
-    public void init(String str) {
-       name = str;
-
-    }
 
     @Override
     public Object process(User usr) {

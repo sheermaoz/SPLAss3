@@ -7,14 +7,9 @@ public class CourseStat extends Message {
 
     private Short courseNum;
 
-    public CourseStat() {
+    public CourseStat(String _num) {
         super((short) 7);
-    }
-
-    @Override
-    public void init(String str) {
-        courseNum = Short.valueOf(str);
-
+        courseNum = Short.valueOf(_num);
     }
 
     @Override

@@ -21,12 +21,6 @@ public class Ack extends Message {
     }
 
     @Override
-    public void init(String str) {
-       resp = Short.valueOf(str);
-
-    }
-
-    @Override
     public Object process(User usr) {
         return null;
     }

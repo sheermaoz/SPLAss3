@@ -7,16 +7,11 @@ public class Login extends Message {
     private String username;
     private String password;
 
-    public Login() {
+    public Login(String str) {
         super((short) 3);
-    }
-
-    @Override
-    public void init(String str) {
         String[] args = str.split("\0");
         username = args[0];
         password = args[1];
-
     }
 
     @Override

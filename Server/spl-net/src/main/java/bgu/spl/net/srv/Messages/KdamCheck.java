@@ -9,15 +9,11 @@ public class KdamCheck extends Message {
 
     private short courseNum;
     
-    public KdamCheck() {
+    public KdamCheck(String _num) {
         super((short) 6);
+        courseNum = Short.valueOf(_num);
     }
 
-    @Override
-    public void init(String str) {
-       courseNum = Short.valueOf(str);
-
-    }
 
     @Override
     public String process(User usr) {

@@ -10,10 +10,6 @@ public class MyCourses extends Message {
         super((short) 11);
     }
 
-    @Override
-    public void init(String str) {
-
-    }
 
     @Override
     public String process(User usr) {

@@ -7,15 +7,10 @@ public class CourseReg extends Message {
 
     private Short courseNum;
 
-    public CourseReg()
+    public CourseReg(String _num)
     {
         super((short)5);
-    }
-
-    @Override
-    public void init(String str) {
-        courseNum = Short.valueOf(str);
-
+        courseNum = Short.valueOf(_num);
     }
 
     @Override

@@ -21,14 +21,5 @@ public abstract class Message {
         return opcode;
     }
 
-
-    public abstract void init(String input);
-
-
-    public String getInit()
-    {
-        return strCommand;
-    }
-
     public abstract Object process(User usr);
 }

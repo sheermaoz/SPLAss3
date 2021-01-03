@@ -9,11 +9,6 @@ public class Logout extends Message {
     }
 
     @Override
-    public void init(String str) {
-
-    }
-
-    @Override
     public Boolean process(User usr) {
         if (usr == null)
         {

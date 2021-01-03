@@ -8,14 +8,9 @@ public class AdminRegister extends Message {
     private String username;
     private String password;
 
-    public AdminRegister()
+    public AdminRegister(String str)
     {
         super((short)1);
-        
-    }
-
-    public void init(String str)
-    {
         String[] args = str.split("\0");
         username = args[0];
         password = args[1];

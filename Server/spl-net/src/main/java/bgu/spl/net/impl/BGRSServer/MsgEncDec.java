@@ -65,37 +65,35 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
     }
 
     private Message popMsg() {
-        retMsg = defineMessage(op_code);
         String result = new String(bytes, 2, len, StandardCharsets.UTF_8);
-        retMsg.init(result);
-
+        retMsg = defineMessage(op_code, result );
         len = 0;
         return retMsg;
     }
 
 
-    private Message defineMessage(short op_code) {
+    private Message defineMessage(short op_code, String result) {
         switch(op_code) {
             case 1:
-                return new AdminRegister();
+                return new AdminRegister(result);
             case 2:
-                return new StudentRegister();
+                return new StudentRegister(result);
             case 3:
-                return new Login();
+                return new Login(result);
             case 4:
                 return new Logout();
             case 5:
-                return new CourseReg();
+                return new CourseReg(result);
             case 6:
-                return new KdamCheck();
+                return new KdamCheck(result);
             case 7:
-                return new CourseStat();
+                return new CourseStat(result);
             case 8:
-                return new StudentStat();
+                return new StudentStat(result);
             case 9:
-                return new IsRegistered();
+                return new IsRegistered(result);
             case 10:
-                return new Unregister();
+                return new Unregister(result);
             case 11:
                 return new MyCourses();
         }

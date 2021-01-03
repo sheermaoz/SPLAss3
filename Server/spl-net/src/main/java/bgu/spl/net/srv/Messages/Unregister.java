@@ -7,14 +7,9 @@ public class Unregister extends Message {
 
     private short courseNum;
 
-    public Unregister() {
+    public Unregister(String _num) {
         super((short) 10);
-    }
-
-    @Override
-    public void init(String str) {
-        courseNum = Short.valueOf(str);
-
+        courseNum = Short.valueOf(_num);
     }
 
     @Override
