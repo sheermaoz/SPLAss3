@@ -1,6 +1,5 @@
 package bgu.spl.net.srv.Messages;
 
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.User;
 
 public class Login extends Message {
@@ -26,7 +25,6 @@ public class Login extends Message {
         {
             return null;
         }
-        Database db = Database.getInstance();
         return db.login(username, password);
     }
 }

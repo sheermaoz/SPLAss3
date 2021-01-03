@@ -1,7 +1,6 @@
 package bgu.spl.net.srv.Messages;
 
 import bgu.spl.net.srv.User;
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.Type;
 
 public class StudentRegister extends Message {
@@ -26,9 +25,8 @@ public class StudentRegister extends Message {
     public Boolean process(User user){
         if (user != null)
         {
-            return false;
+            return null;
         }
-        Database db = Database.getInstance();
         return db.register(username, Type.User, password);
     }
     

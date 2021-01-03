@@ -101,11 +101,11 @@ public class Database {
         }
     }
 
-    public boolean register(String name, Type type, String password)
+    public Boolean register(String name, Type type, String password)
     {
         if (users.get(name) != null)
         {
-            return false;
+            return null;
         }
         users.put(name, new User(name, type, password));
         return true;
@@ -125,13 +125,14 @@ public class Database {
         return null;
     }
 
-    public boolean courseRegister(String name, short course)
+    public Boolean courseRegister(String name, short course)
     {
         if (courses.get(course).register(name))
         {
             users.get(name).register(course);
+            return true;
         }
-        return false;
+        return null;
     }
 
     public Short[] checkKdam(Short course)
@@ -146,11 +147,11 @@ public class Database {
         return users.get(name).contains(course);
     }
 
-    public boolean unregister(String name, Short course)
+    public Boolean unregister(String name, Short course)
     {
         if (!users.get(name).contains(course))
         {
-            return false;
+            return null;
         }
         users.get(name).unregister(course);
         courses.get(course).unregister(name);

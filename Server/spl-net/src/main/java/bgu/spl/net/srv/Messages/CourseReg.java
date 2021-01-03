@@ -1,6 +1,5 @@
 package bgu.spl.net.srv.Messages;
 
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
@@ -23,9 +22,8 @@ public class CourseReg extends Message {
     public Boolean process(User user) {
         if (user == null || user.getType() == Type.Admin)
         {
-            return false;
+            return null;
         }
-        Database db = Database.getInstance();
         return db.courseRegister(user.getName(), courseNum);
     }
 

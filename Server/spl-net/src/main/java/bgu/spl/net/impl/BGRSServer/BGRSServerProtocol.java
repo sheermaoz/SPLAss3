@@ -1,20 +1,16 @@
 package bgu.spl.net.impl.BGRSServer;
 
-import bgu.spl.net.Database;
 import bgu.spl.net.api.MessagingProtocol;
 import bgu.spl.net.srv.Messages.*;
-import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
 public class BGRSServerProtocol implements MessagingProtocol<Message> {
 
     private User user;
-    private Database database;
     private boolean terminate;
 
     public BGRSServerProtocol()
     {
-        database = Database.getInstance();
         user = null;
         terminate = false;
     }

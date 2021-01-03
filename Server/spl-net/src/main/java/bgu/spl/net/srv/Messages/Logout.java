@@ -17,7 +17,7 @@ public class Logout extends Message {
     public Boolean process(User usr) {
         if (usr == null)
         {
-            return false;
+            return null;
         }
         return true;
     }

@@ -1,6 +1,5 @@
 package bgu.spl.net.srv.Messages;
 
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
@@ -24,7 +23,6 @@ public class Unregister extends Message {
         {
             return null;
         }
-        Database db = Database.getInstance();
         return db.unregister(usr.getName(), courseNum);
     }
     

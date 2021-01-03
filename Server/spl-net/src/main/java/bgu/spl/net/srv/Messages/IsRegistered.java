@@ -1,6 +1,6 @@
 package bgu.spl.net.srv.Messages;
 
-import bgu.spl.net.Database;
+
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
@@ -24,7 +24,6 @@ public class IsRegistered extends Message {
         {
             return null;
         }
-        Database db = Database.getInstance();
         return db.isRegistered(usr.getName(), courseNum);
     }
     

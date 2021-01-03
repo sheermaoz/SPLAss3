@@ -17,7 +17,7 @@ public class Ack extends Message {
     }
 
     public String toString() {
-        return ""  + resp + args + "\0";
+        return "ACK "  + resp + args + "\0";
     }
 
     @Override

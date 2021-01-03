@@ -13,7 +13,7 @@ public class Err extends Message {
 
     @Override
     public String toString() {
-        return ""  + resp;
+        return "ERR "  + resp;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package bgu.spl.net.srv.Messages;
 
-import bgu.spl.net.Database;
 import bgu.spl.net.srv.Type;
 import bgu.spl.net.srv.User;
 
@@ -26,9 +25,8 @@ public class AdminRegister extends Message {
     public Boolean process(User user){
         if (user != null)
         {
-            return false;
+            return null;
         }
-        Database db = Database.getInstance();
         return db.register(username, Type.Admin, password);
     }
     
