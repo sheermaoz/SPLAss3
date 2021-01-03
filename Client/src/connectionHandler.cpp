@@ -109,3 +109,11 @@ void ConnectionHandler::close() {
     }
 }
 
+bool ConnectionHandler::logoutAnswer() {
+    while(!flag){}
+    if(logoutAns == "ACK 4")
+        return true;
+    else
+        return false;
+}
+

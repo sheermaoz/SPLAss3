@@ -19,10 +19,15 @@ private:
 	tcp::socket socket_;
 
 
+
  
 public:
     ConnectionHandler(std::string host, short port);
     MessageEncoderDecoder EncDec;
+    string logoutAns;
+    bool flag = false;
+    bool logoutAnswer();
+
 
     virtual ~ConnectionHandler();
  

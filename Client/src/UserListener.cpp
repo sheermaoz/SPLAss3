@@ -11,6 +11,10 @@ void UserListener::run() {
         std::cin.getline(buf, bufsize);
         std::string line(buf);
         int len = line.length();
+        bool flag = false;
+
+        if(line == "LOGOUT")
+            flag = true;
 
         //encoding
         Message toSend = _handler.EncDec.encode(line);
@@ -27,13 +31,16 @@ void UserListener::run() {
                 std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
             }
-
+            continue;
         }
 
         if(toSend.op_code == 4 | toSend.op_code == 11){
             if(!sendOp(toSend))
                 break;
         }
+        if(flag == true)
+            if(_handler.logoutAnswer())
+                shouldTerminate = true;
 
         if(toSend.op_code >= 5 && toSend.op_code <=10 && toSend.op_code!=8){
             if(!sendOp(toSend))
@@ -51,7 +58,7 @@ void UserListener::run() {
             }
         }
 
-        std::cout << "Sent " << len+1 << " bytes to server" << std::endl;  //for debugging
+
     }
 }
 
