@@ -58,11 +58,10 @@ void UserListener::run() {
             }
         }
 
-
     }
 }
 
-void UserListener::Terminate() { shouldTerminate = true; }
+
 
 bool UserListener::sendOp(Message toSend){
     if(!_handler.sendBytes(toSend.opByte, 2)){

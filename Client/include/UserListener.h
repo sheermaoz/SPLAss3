@@ -17,7 +17,6 @@ private:
 public:
     UserListener(mutex &_mutex, ConnectionHandler &handler);
     void run();
-    void Terminate();
 
     bool sendOp(Message toSend);
 

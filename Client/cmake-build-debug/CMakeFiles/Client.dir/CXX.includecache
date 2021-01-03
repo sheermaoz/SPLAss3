@@ -6,8 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../include/BGRSclient.h
-
 ../include/Message.h
 string
 -
@@ -30,16 +28,6 @@ mutex
 thread
 -
 
-../include/UserListener.h
-connectionHandler.h
--
-iostream
--
-mutex
--
-thread
--
-
 ../include/connectionHandler.h
 string
 -
@@ -50,29 +38,7 @@ boost/asio.hpp
 MessageEncoderDecoder.h
 -
 
-/home/spl211/SPLAss3/Client/src/BGRSclient.cpp
-BGRSclient.h
-/home/spl211/SPLAss3/Client/src/BGRSclient.h
-stdlib.h
--
-connectionHandler.h
--
-iostream
--
-mutex
--
-thread
--
+/home/spl211/SPLAss3/Client/src/ServerCom.cpp
 ServerCom.h
--
-UserListener.h
--
-boost/lexical_cast.hpp
--
-boost/algorithm/string.hpp
--
-vector
--
-Message.h
--
+/home/spl211/SPLAss3/Client/src/ServerCom.h
 

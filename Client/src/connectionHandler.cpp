@@ -1,5 +1,6 @@
 #include <connectionHandler.h>
- 
+#include <thread>
+
 using boost::asio::ip::tcp;
 
 using std::cin;
@@ -110,7 +111,9 @@ void ConnectionHandler::close() {
 }
 
 bool ConnectionHandler::logoutAnswer() {
-    while(!flag){}
+    while(!flag){
+        this_thread::yield();
+    }
     if(logoutAns == "ACK 4")
         return true;
     else
