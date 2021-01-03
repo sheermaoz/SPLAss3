@@ -17,7 +17,7 @@ void ServerCom::run() {
         cout << answer << endl;
 
         _handler.flag = false;
-        if (answer == "ACK 4") {
+        if (answer == "ACK 4") {     //checking the case of termination
             _handler.logoutAns = "ERR 4";
             _handler.flag = true;
             Terminate();
