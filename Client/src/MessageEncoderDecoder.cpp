@@ -94,7 +94,7 @@ Message MessageEncoderDecoder::type3(short op){
     return retMsg;
 }
 
-string MessageEncoderDecoder::decodeNextByte() {
+string MessageEncoderDecoder::decodeNextByte(char nextByte) {
     return std::__cxx11::string();
 }
 
@@ -109,22 +109,3 @@ void MessageEncoderDecoder::shortToBytes(short num, char *bytesArr) {
     bytesArr[1] = (num & 0xFF);
 }
 
-string MessageEncoderDecoder::getUsernamePassword(int ind, string command) {
-    bool name = false;
-    int start = ind;
-    string username;
-    string password;
-    int countDigit = 0;
-    while(ind < command.length()){
-        if(!name && command[ind] != ' '){
-            username = command.substr(start, countDigit);
-            start = start+countDigit+1;
-        }
-        countDigit++;
-        ind++;
-    }
-    password = command.substr(start, countDigit-start);
-
-
-    return std::__cxx11::string();
-}

@@ -7,16 +7,18 @@ using namespace std;
 
 class MessageEncoderDecoder {
 public:
-    string decodeNextByte();
+    string decodeNextByte(char nextByte);
     Message encode(string arg);
     short bytesToShort(char* bytesArr);
     void shortToBytes(short num, char* bytesArr);
-    string getUsernamePassword(int start, string command);
+
+    Message type1(short op, vector<string> splittedArg);
+
     Message type2(short op, vector<string> splittedArg);
 
     Message type3(short op);
 
-    Message type1(short op, vector<string> splittedArg);
+
 };
 
 

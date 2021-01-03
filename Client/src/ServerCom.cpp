@@ -1,4 +1,5 @@
 #include "ServerCom.h"
+using namespace std;
 
 ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _mutex(_mutex), _handler(handler) {
 
@@ -12,10 +13,8 @@ void ServerCom::run() {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
-        len=answer.length();
-            /*answer.resize(len-1);  not sure why needed, check when sending to the server*/
-        std::cout << "Reply: " << answer << " " << len << " bytes " << std::endl << std::endl;
-        if (answer == "terminate") {
+        cout << answer <<endl;
+        if (answer == "ACK 4") {
             Terminate();
             std::cout << "Exiting...\n" << std::endl;
             break;
