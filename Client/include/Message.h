@@ -9,9 +9,15 @@ class Message {
 public:
     string username;
     string password;
+    string arg;
     char* opByte;
-    int op_code;
-    Message(string username,string password, char& opByte, int op_code);
+    short op_code;
+    char* shortAns;
+
+    Message(string username,string password, char& opByte, short op_code);
+    Message(char& opByte, short op_code);
+    Message(char& opByte, short op_code, char& shortAns);
+    Message(char& opByte, short op_code, string arg);
 };
 
 

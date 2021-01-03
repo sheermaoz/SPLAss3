@@ -20,6 +20,8 @@ public:
     void Terminate();
 
     bool sendOp(Message toSend);
+
+    bool sendShortAns(Message toSend);
 };
 
 

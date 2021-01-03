@@ -12,12 +12,18 @@ void UserListener::run() {
         std::string line(buf);
         int len = line.length();
 
-        //todo: encode line
+        //encoding
         Message toSend = _handler.EncDec.encode(line);
+
+        //sending
         if(toSend.op_code == 1 | toSend.op_code == 2 | toSend.op_code == 3) {
             if(!sendOp(toSend))
                 break;
-            if (!_handler.sendLine(toSend.arg)) {     //sending to the socket
+            if (!_handler.sendLine(toSend.username)) {     //sending to the socket
+                std::cout << "Disconnected. Exiting...\n" << std::endl;
+                break;
+            }
+            if (!_handler.sendLine(toSend.password)) {     //sending to the socket
                 std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
             }
@@ -29,7 +35,21 @@ void UserListener::run() {
                 break;
         }
 
-        if(toSend.op_code >= 5 && toSend.op_code <=10 && toSend.op_code!=8)
+        if(toSend.op_code >= 5 && toSend.op_code <=10 && toSend.op_code!=8){
+            if(!sendOp(toSend))
+                break;
+            if(!sendShortAns(toSend))
+                break;
+        }
+
+        if(toSend.op_code == 8){
+            if(!sendOp(toSend))
+                break;
+            if (!_handler.sendLine(toSend.arg)) {     //sending to the socket
+                std::cout << "Disconnected. Exiting...\n" << std::endl;
+                break;
+            }
+        }
 
         std::cout << "Sent " << len+1 << " bytes to server" << std::endl;  //for debugging
     }
@@ -39,6 +59,14 @@ void UserListener::Terminate() { shouldTerminate = true; }
 
 bool UserListener::sendOp(Message toSend){
     if(!_handler.sendBytes(toSend.opByte, 2)){
+        std::cout << "Disconnected. Exiting...\n" << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool UserListener::sendShortAns(Message toSend){
+    if(!_handler.sendBytes(toSend.shortAns, 2)){
         std::cout << "Disconnected. Exiting...\n" << std::endl;
         return false;
     }
