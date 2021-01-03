@@ -105,7 +105,11 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
 
     @Override
     public byte[] encode(Message message) {
-        return new byte[0];
+        if (message.getOpcode() == 12)
+        {
+            return ((Ack)message).toString().getBytes();
+        }
+        return ((Err)message).toString().getBytes();
     }
 
     private short bytesToShort(byte[] byteArr)
