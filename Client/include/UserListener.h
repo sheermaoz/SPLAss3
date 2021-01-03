@@ -6,6 +6,7 @@ using namespace std;
 #include <iostream>
 #include <mutex>
 #include <thread>
+#include <Message.h>
 
 class UserListener {
 private:
@@ -17,6 +18,8 @@ public:
     UserListener(mutex &_mutex, ConnectionHandler &handler);
     void run();
     void Terminate();
+
+    bool sendOp(Message toSend);
 };
 
 

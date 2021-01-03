@@ -8,12 +8,16 @@
 
 ../include/BGRSclient.h
 
+../include/Message.h
+string
+-
+vector
+-
+
 ../include/MessageEncoderDecoder.h
 string
 -
-
-../include/MessageProtocol.h
-string
+Message.h
 -
 
 ../include/ServerCom.h
@@ -45,8 +49,6 @@ boost/asio.hpp
 -
 MessageEncoderDecoder.h
 -
-MessageProtocol.h
--
 
 /home/spl211/SPLAss3/Client/src/BGRSclient.cpp
 BGRSclient.h
@@ -66,5 +68,11 @@ ServerCom.h
 UserListener.h
 -
 boost/lexical_cast.hpp
+-
+boost/algorithm/string.hpp
+-
+vector
+-
+Message.h
 -
 

@@ -170,6 +170,33 @@ src/BGRSclient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/BGRSclient.cpp.s
 .PHONY : src/BGRSclient.cpp.s
 
+src/Message.o: src/Message.cpp.o
+
+.PHONY : src/Message.o
+
+# target to build an object file
+src/Message.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Message.cpp.o
+.PHONY : src/Message.cpp.o
+
+src/Message.i: src/Message.cpp.i
+
+.PHONY : src/Message.i
+
+# target to preprocess a source file
+src/Message.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Message.cpp.i
+.PHONY : src/Message.cpp.i
+
+src/Message.s: src/Message.cpp.s
+
+.PHONY : src/Message.s
+
+# target to generate assembly for a file
+src/Message.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Message.cpp.s
+.PHONY : src/Message.cpp.s
+
 src/MessageEncoderDecoder.o: src/MessageEncoderDecoder.cpp.o
 
 .PHONY : src/MessageEncoderDecoder.o
@@ -196,33 +223,6 @@ src/MessageEncoderDecoder.s: src/MessageEncoderDecoder.cpp.s
 src/MessageEncoderDecoder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageEncoderDecoder.cpp.s
 .PHONY : src/MessageEncoderDecoder.cpp.s
-
-src/MessageProtocol.o: src/MessageProtocol.cpp.o
-
-.PHONY : src/MessageProtocol.o
-
-# target to build an object file
-src/MessageProtocol.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageProtocol.cpp.o
-.PHONY : src/MessageProtocol.cpp.o
-
-src/MessageProtocol.i: src/MessageProtocol.cpp.i
-
-.PHONY : src/MessageProtocol.i
-
-# target to preprocess a source file
-src/MessageProtocol.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageProtocol.cpp.i
-.PHONY : src/MessageProtocol.cpp.i
-
-src/MessageProtocol.s: src/MessageProtocol.cpp.s
-
-.PHONY : src/MessageProtocol.s
-
-# target to generate assembly for a file
-src/MessageProtocol.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/MessageProtocol.cpp.s
-.PHONY : src/MessageProtocol.cpp.s
 
 src/ServerCom.o: src/ServerCom.cpp.o
 
@@ -344,12 +344,12 @@ help:
 	@echo "... src/BGRSclient.o"
 	@echo "... src/BGRSclient.i"
 	@echo "... src/BGRSclient.s"
+	@echo "... src/Message.o"
+	@echo "... src/Message.i"
+	@echo "... src/Message.s"
 	@echo "... src/MessageEncoderDecoder.o"
 	@echo "... src/MessageEncoderDecoder.i"
 	@echo "... src/MessageEncoderDecoder.s"
-	@echo "... src/MessageProtocol.o"
-	@echo "... src/MessageProtocol.i"
-	@echo "... src/MessageProtocol.s"
 	@echo "... src/ServerCom.o"
 	@echo "... src/ServerCom.i"
 	@echo "... src/ServerCom.s"

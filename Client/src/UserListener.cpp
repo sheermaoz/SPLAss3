@@ -13,15 +13,35 @@ void UserListener::run() {
         int len = line.length();
 
         //todo: encode line
+        Message toSend = _handler.EncDec.encode(line);
+        if(toSend.op_code == 1 | toSend.op_code == 2 | toSend.op_code == 3) {
+            if(!sendOp(toSend))
+                break;
+            if (!_handler.sendLine(toSend.arg)) {     //sending to the socket
+                std::cout << "Disconnected. Exiting...\n" << std::endl;
+                break;
+            }
 
-        if (!_handler.sendLine(line)) {     //sending to the socket
-            std::cout << "Disconnected. Exiting...\n" << std::endl;
-            break;
         }
+
+        if(toSend.op_code == 4 | toSend.op_code == 11){
+            if(!sendOp(toSend))
+                break;
+        }
+
+        if(toSend.op_code >= 5 && toSend.op_code <=10 && toSend.op_code!=8)
+
         std::cout << "Sent " << len+1 << " bytes to server" << std::endl;  //for debugging
     }
 }
 
 void UserListener::Terminate() { shouldTerminate = true; }
 
+bool UserListener::sendOp(Message toSend){
+    if(!_handler.sendBytes(toSend.opByte, 2)){
+        std::cout << "Disconnected. Exiting...\n" << std::endl;
+        return false;
+    }
+    return true;
+}
 

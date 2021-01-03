@@ -8,6 +8,9 @@
 #include <ServerCom.h>
 #include <UserListener.h>
 #include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string.hpp>
+#include <vector>
+#include <Message.h>
 
 using namespace std;
 /**
@@ -44,7 +47,7 @@ int main (int argc, char *argv[]) {
         return 1;
     }*/
 
-    /*mutex mutex;
+    mutex mutex;
     ServerCom serverCom(mutex, connectionHandler);
     UserListener userListener(mutex, connectionHandler);
 
@@ -52,39 +55,23 @@ int main (int argc, char *argv[]) {
     thread th2(&UserListener::run, &userListener);
 
     th1.join();
-    th2.join();*/
+    th2.join();
 
 
 
-    string a("ADMINREG omer shaya");
+    /*string a("ADMINREG omer shaya");
     cout<<"in string: "+a<<endl;
 
-    int i=9;
-    string username;
-    string password;
-    int countDigit=0;
-    while(a[i] != ' ' ) {
-        countDigit++;
-        i++;
-    }
-    username = a.substr(9, countDigit);
-    countDigit=0;
-    i=i+1;
-    int from = i;
-    while(i<a.length()){
-        countDigit++;
-        i++;
-    }
-    cout<<a.length()<<" ,"<<from<<endl;
-    password = a.substr(from, countDigit);
-    cout<<username<<", "<<password<<endl;
+    vector<string> result;
+    boost::split(result, a, boost::is_any_of(" "));
+    cout<<result[1]+" "+result[2]<<endl;
 
-    char const *c = username.c_str();
-    char const *c2 = password.c_str();
-    char* opByte;
-    shortToBytes(1, opByte);
-    char* all;
-    while()
+    char* opByte = new char[2];
+    short b = 5;
+    shortToBytes(b, opByte);
+    string nameAndPw = result[1]+" "+result[2];
+    Message retMsg = Message(nameAndPw, *opByte);
+    cout<< retMsg.arg <<" charByte: "<< bytesToShort(retMsg.opByte)<<endl;*/
 
 
 

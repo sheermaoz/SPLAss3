@@ -5,7 +5,7 @@
 #include <iostream>
 #include <boost/asio.hpp>
 #include <MessageEncoderDecoder.h>
-#include <MessageProtocol.h>
+
 
 using namespace std;
 
@@ -17,11 +17,13 @@ private:
 	const short port_;
 	boost::asio::io_service io_service_;   // Provides core I/O functionality
 	tcp::socket socket_;
-	MessageEncoderDecoder EncDec;
-	MessageProtocol protocol;
+
+
  
 public:
     ConnectionHandler(std::string host, short port);
+    MessageEncoderDecoder EncDec;
+
     virtual ~ConnectionHandler();
  
     // Connect to the remote machine

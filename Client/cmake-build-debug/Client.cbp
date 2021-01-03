@@ -89,10 +89,10 @@
 		<Unit filename="/home/spl211/SPLAss3/Client/include/BGRSclient.h">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/include/MessageEncoderDecoder.h">
+		<Unit filename="/home/spl211/SPLAss3/Client/include/Message.h">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/include/MessageProtocol.h">
+		<Unit filename="/home/spl211/SPLAss3/Client/include/MessageEncoderDecoder.h">
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/include/ServerCom.h">
@@ -107,10 +107,10 @@
 		<Unit filename="/home/spl211/SPLAss3/Client/src/BGRSclient.cpp">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.cpp">
+		<Unit filename="/home/spl211/SPLAss3/Client/src/Message.cpp">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/SPLAss3/Client/src/MessageProtocol.cpp">
+		<Unit filename="/home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.cpp">
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/SPLAss3/Client/src/ServerCom.cpp">
