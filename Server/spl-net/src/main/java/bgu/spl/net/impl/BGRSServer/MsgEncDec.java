@@ -112,31 +112,30 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
 
     @Override
     public byte[] encode(Message message) {
-        byte [] result;
+        short opCode = message.getOpcode();
+        byte [] opByte = shortToBytes(opCode);
+        byte [] result = new byte[0];
         short respCode;
-        byte[] codeByte;
-        if (message.getOpcode() == 12)
+
+        if (opCode == 12)
         {
-            byte [] response =  ((Ack)message).toString().getBytes();
             respCode = ((Ack)message).getResp();
-            codeByte = shortToBytes(respCode);
-            byte [] temp = new byte[response.length + 2];
-            System.arraycopy(codeByte, 0, temp, 0, 2);
-            System.arraycopy(response, 0, temp, 2, response.length);
-            codeByte = temp;
-            result = "ACK".getBytes();
+            result = ((Ack)message).toString().getBytes();
         }
         else
         {
             respCode = ((Err)message).getResp();
-            codeByte = shortToBytes(respCode);
-            result = "ERROR".getBytes();
         }
-
-        byte[] answer = new byte[codeByte.length + result.length];
-        System.arraycopy(result, 0, answer, 0, result.length);
-        System.arraycopy(codeByte, 0, answer, result.length, codeByte.length);
+        
+        byte[]  codeByte = shortToBytes(respCode);
+        byte [] answer = new byte[result.length + 4];
+        answer[0] = opByte[0];
+        answer[1] = opByte[1];
+        answer[2] = codeByte[0];
+        answer[3] = codeByte[1];
+        System.arraycopy(result, 0,answer, 4, result.length);
         return answer;
+
     }
 
     private short bytesToShort(byte[] byteArr)

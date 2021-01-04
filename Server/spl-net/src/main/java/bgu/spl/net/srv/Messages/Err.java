@@ -12,11 +12,6 @@ public class Err extends Message {
     }
 
     @Override
-    public String toString() {
-        return "ERROR "  + resp;
-    }
-
-    @Override
     public Object process(User usr) {
         return null;
     }
