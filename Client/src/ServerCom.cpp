@@ -22,7 +22,7 @@ void ServerCom::run() {
             _handler.flag = true;
             Terminate();
         }
-        if (answer == "ERR 4"){
+        if (answer == "ERR 4"){     //checking the case of termination
             _handler.logoutAns = "ERR 4";
             _handler.flag = true;
         }

@@ -1,5 +1,9 @@
 #include <connectionHandler.h>
 #include <thread>
+#include <array>
+#include <iostream>
+#include <algorithm>
+#include <string>
 
 using boost::asio::ip::tcp;
 
@@ -94,8 +98,41 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
     }
     return true;
 }
- 
- 
+
+bool ConnectionHandler::getMsgArr(char *byteArr) {
+
+    char ch;
+    int i=0;
+
+    try {
+        do{
+            if(!getBytes(&ch, 1))
+            {
+                return false;
+            }
+            byteArr[i] = ch;
+            i = i+1;
+        }while (i < 4);
+    } catch (std::exception& e) {
+        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
+        return false;
+    }
+    if(EncDec.bytesToShort(byteArr) == 13){
+        return getMsgArrErr(byteArr);
+    }
+
+    return getMsgArrAck(byteArr);
+
+}
+
+bool ConnectionHandler::getMsgArrErr(char *byteArr){
+    
+}
+
+bool ConnectionHandler::getMsgArrAck(char *byteArr){
+
+}
+
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
 	bool result=sendBytes(frame.c_str(),frame.length());
 	if(!result) return false;

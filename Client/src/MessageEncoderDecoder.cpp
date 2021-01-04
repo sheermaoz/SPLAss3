@@ -94,10 +94,6 @@ Message MessageEncoderDecoder::type3(short op){
     return retMsg;
 }
 
-string MessageEncoderDecoder::decodeNextByte(char nextByte) {
-    return std::__cxx11::string();
-}
-
 short MessageEncoderDecoder::bytesToShort(char *bytesArr) {
     short result = (short)((bytesArr[0] & 0xff) << 8);
     result += (short)(bytesArr[1] & 0xff);

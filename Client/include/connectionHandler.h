@@ -28,6 +28,9 @@ public:
     bool flag = false;
     bool logoutAnswer();
 
+    bool getMsgArrErr(char *byteArr);
+
+    bool getMsgArrAck(char *byteArr);
 
     virtual ~ConnectionHandler();
  
@@ -61,16 +64,9 @@ public:
     // Close down the connection properly.
     void close();
 
-    char* Enc(std::string arg){};
 
-    char* EncShort(short op);
 
-    string Dec(char* byteArr);
-
-    short bytesToShort(char* bytesArr);
-
-    void shortToBytes(short num, char* bytesArr);
-
+    bool getMsgArr(char *byteArr);
 }; //class ConnectionHandler
  
 #endif
