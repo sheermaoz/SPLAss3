@@ -128,6 +128,13 @@ public class Database {
 
     public Boolean courseRegister(String name, short course)
     {
+        for (Short num : courses.get(course).getKdam())
+        {
+            if (!users.get(name).getCourses().contains(num))
+            {
+                return null;
+            }
+        }
         if (courses.get(course).register(name))
         {
             users.get(name).register(course);

@@ -21,18 +21,14 @@ public class BGRSServerProtocol implements MessagingProtocol<Message> {
         Ack answer = new Ack(opcode);
         Object response = msg.process(user);
         
-        if (opcode == 4)
-        {
-            terminate = (Boolean)response;
-            if (!terminate)
-            {
-               response = null;
-            }
-        }
-
         if (response == null)
         {
             return new Err(opcode);
+        }
+
+        if (opcode == 4)
+        {
+            terminate = true;
         }
         
 
@@ -45,17 +41,17 @@ public class BGRSServerProtocol implements MessagingProtocol<Message> {
         {
             if ((Boolean)response == false)
             {
-                answer.addArg("\nNOT REGISTERED");
+                answer.addArg("NOT REGISTERED");
             }
             else
             {
-                answer.addArg("\nREGISTERED");
+                answer.addArg("REGISTERED");
             }
         }
 
         else if (opcode == 6 | opcode == 7 | opcode == 8 | opcode == 11)
         {
-            answer.addArg("\n"+(String)response);
+            answer.addArg((String)response);
         }
 
         return answer;

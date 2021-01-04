@@ -14,7 +14,7 @@ public class Ack extends Message {
     }
 
     public void addArg(String arg) {
-        args = args + arg;
+        args = args + "\n" + arg;
     }
 
     public String toString() {
