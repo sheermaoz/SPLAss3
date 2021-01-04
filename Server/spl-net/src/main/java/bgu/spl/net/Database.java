@@ -30,7 +30,7 @@ public class Database {
     private Database() {
         courses = new ConcurrentHashMap<>();
         users = new ConcurrentHashMap<>();
-        initialize("spl-net/src/main/java/bgu/spl/net/Courses.txt");
+        initialize("/home/spl211/SPLAss3/Server/spl-net/src/main/java/bgu/spl/net/Courses.txt");
     }
 
     private static class DatabaseHolder
@@ -140,7 +140,7 @@ public class Database {
     {
         Short[] kdam = courses.get(course).getKdam();
         
-        return sort(kdam);
+        return kdam;
     }
 
     public boolean isRegistered(String name, Short course)

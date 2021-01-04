@@ -12,7 +12,7 @@ public class Logout extends Message {
     public Boolean process(User usr) {
         if (usr == null)
         {
-            return null;
+            return false;
         }
         return true;
     }

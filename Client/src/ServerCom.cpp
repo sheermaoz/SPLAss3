@@ -18,7 +18,7 @@ void ServerCom::run() {
 
         _handler.flag = false;
         if (answer == "ACK 4") {     //checking the case of termination
-            _handler.logoutAns = "ERR 4";
+            _handler.logoutAns = "ACK 4";
             _handler.flag = true;
             Terminate();
         }
