@@ -126,18 +126,23 @@ public class Database {
         return null;
     }
 
-    public Boolean courseRegister(String name, short course)
+    public Boolean courseRegister(String name, short courseNum)
     {
-        for (Short num : courses.get(course).getKdam())
+        Course course = courses.get(courseNum);
+        if (course == null)
+        {
+            return null;
+        }
+        for (Short num : course.getKdam())
         {
             if (!users.get(name).getCourses().contains(num))
             {
                 return null;
             }
         }
-        if (courses.get(course).register(name))
+        if (course.register(name))
         {
-            users.get(name).register(course);
+            users.get(name).register(courseNum);
             return true;
         }
         return null;
