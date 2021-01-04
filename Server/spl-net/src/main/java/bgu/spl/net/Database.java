@@ -30,7 +30,7 @@ public class Database {
     private Database() {
         courses = new ConcurrentHashMap<>();
         users = new ConcurrentHashMap<>();
-        initialize("spl-net/src/main/java/bgu/spl/net/Courses.txt");
+        initialize("spl-net/Courses.txt");
     }
 
     private static class DatabaseHolder
