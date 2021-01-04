@@ -20,5 +20,10 @@ public class Err extends Message {
     public Object process(User usr) {
         return null;
     }
+
+    public short getResp()
+    {
+        return resp;
+    }
     
 }

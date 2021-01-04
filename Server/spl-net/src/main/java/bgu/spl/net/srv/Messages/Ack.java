@@ -18,12 +18,17 @@ public class Ack extends Message {
     }
 
     public String toString() {
-        return "ACK "  + resp + args + "\0";
+        return args + "\0";
     }
 
     @Override
     public Object process(User usr) {
         return null;
+    }
+
+    public short getResp()
+    {
+        return resp;
     }
 
 }
