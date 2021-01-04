@@ -26,11 +26,9 @@ public:
     bool flag = false;
     bool logoutAnswer();
 
-    bool getMsgArrErr(char *byteArr);
+    bool getMsgArrAck(string& frame);
 
-    bool getMsgArrAck(string& frame, char *byteArr);
-
-    bool getMsgArr(string& frame, char *byteArr);
+    bool getMsgArr(string& frame, vector<char>& byteArr);
 
     virtual ~ConnectionHandler();
  
@@ -65,7 +63,7 @@ public:
     void close();
 
 
-    bool getLine2(string &ackAns, char *byteArr);
+    bool getLine2(string &ackAns, vector<char>& byteArr);
 }; //class ConnectionHandler
  
 #endif

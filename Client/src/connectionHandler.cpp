@@ -43,7 +43,7 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
 	boost::system::error_code error;
     try {
         while (!error && bytesToRead > tmp ) {
-			tmp += socket_.read_some(boost::asio::buffer(bytes+tmp, bytesToRead-tmp), error);			
+			tmp += socket_.read_some(boost::asio::buffer(bytes+tmp, bytesToRead-tmp), error);
         }
 		if(error)
 			throw boost::system::system_error(error);
@@ -99,7 +99,7 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
     return true;
 }
 
-bool ConnectionHandler::getMsgArr(string& frame, char *byteArr) {
+bool ConnectionHandler::getMsgArr(string& frame, vector<char>& byteArr) {
 
     char ch;
     int i=0;
@@ -110,52 +110,32 @@ bool ConnectionHandler::getMsgArr(string& frame, char *byteArr) {
             {
                 return false;
             }
-            byteArr[i] = ch;
-            i = i+1;
-        }while (i < 2);
-    } catch (std::exception& e) {
-        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
-        return false;
-    }
-    if(EncDec.bytesToShort(byteArr) == 12){
-        return getMsgArrAck(frame, byteArr);
-    }
-    return getMsgArrErr(byteArr);
-
-}
-
-bool ConnectionHandler::getMsgArrErr(char *byteArr){
-    char ch;
-    int i=2;
-
-    try {
-        do{
-            if(!getBytes(&ch, 1))
-            {
-                return false;
-            }
-            byteArr[i] = ch;
+            byteArr.push_back(ch);
             i = i+1;
         }while (i < 4);
     } catch (std::exception& e) {
         std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
         return false;
     }
+
+    char byteArrCopy[] = {byteArr[0], byteArr[1]};
+    if(EncDec.bytesToShort(byteArrCopy) == 12){
+        return getMsgArrAck(frame);
+    }
+    return true;
+
 }
 
-bool ConnectionHandler::getMsgArrAck(string &frame, char *byteArr){
+bool ConnectionHandler::getMsgArrAck(string &frame){
     char ch;
-    int i=2;
+
     try {
         do{
             if(!getBytes(&ch, 1))
             {
                 return false;
             }
-            if(ch!='\0' && i < 4){
-                byteArr[i] = ch;
-                i++;
-            } else{
+            if(ch!='\0' ){
                 frame.append(1, ch);
             }
 
@@ -167,7 +147,7 @@ bool ConnectionHandler::getMsgArrAck(string &frame, char *byteArr){
     return true;
 }
 
-bool ConnectionHandler::getLine2(string& ackAns, char* byteArr) {
+bool ConnectionHandler::getLine2(string& ackAns, vector<char>& byteArr) {
     return getMsgArr(ackAns, byteArr);
 }
 
@@ -187,9 +167,7 @@ void ConnectionHandler::close() {
 }
 
 bool ConnectionHandler::logoutAnswer() {
-    while(!flag){
-        this_thread::yield();
-    }
+    while(!flag){}
     if(logoutAns == "ACK 4")
         return true;
     else
