@@ -5,8 +5,6 @@
 #include <iostream>
 #include <boost/asio.hpp>
 #include <MessageEncoderDecoder.h>
-
-
 using namespace std;
 
 using boost::asio::ip::tcp;
@@ -30,7 +28,9 @@ public:
 
     bool getMsgArrErr(char *byteArr);
 
-    bool getMsgArrAck(char *byteArr);
+    bool getMsgArrAck(string& frame, char *byteArr);
+
+    bool getMsgArr(string& frame, char *byteArr);
 
     virtual ~ConnectionHandler();
  
@@ -65,8 +65,7 @@ public:
     void close();
 
 
-
-    bool getMsgArr(char *byteArr);
+    bool getLine2(string &ackAns, char *byteArr);
 }; //class ConnectionHandler
  
 #endif

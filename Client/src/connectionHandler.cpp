@@ -99,10 +99,34 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
     return true;
 }
 
-bool ConnectionHandler::getMsgArr(char *byteArr) {
+bool ConnectionHandler::getMsgArr(string& frame, char *byteArr) {
 
     char ch;
     int i=0;
+
+    try {
+        do{
+            if(!getBytes(&ch, 1))
+            {
+                return false;
+            }
+            byteArr[i] = ch;
+            i = i+1;
+        }while (i < 2);
+    } catch (std::exception& e) {
+        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
+        return false;
+    }
+    if(EncDec.bytesToShort(byteArr) == 12){
+        return getMsgArrAck(frame, byteArr);
+    }
+    return getMsgArrErr(byteArr);
+
+}
+
+bool ConnectionHandler::getMsgArrErr(char *byteArr){
+    char ch;
+    int i=2;
 
     try {
         do{
@@ -117,20 +141,34 @@ bool ConnectionHandler::getMsgArr(char *byteArr) {
         std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
         return false;
     }
-    if(EncDec.bytesToShort(byteArr) == 13){
-        return getMsgArrErr(byteArr);
+}
+
+bool ConnectionHandler::getMsgArrAck(string &frame, char *byteArr){
+    char ch;
+    int i=2;
+    try {
+        do{
+            if(!getBytes(&ch, 1))
+            {
+                return false;
+            }
+            if(ch!='\0' && i < 4){
+                byteArr[i] = ch;
+                i++;
+            } else{
+                frame.append(1, ch);
+            }
+
+        }while (ch != '\0');
+    } catch (std::exception& e) {
+        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
+        return false;
     }
-
-    return getMsgArrAck(byteArr);
-
+    return true;
 }
 
-bool ConnectionHandler::getMsgArrErr(char *byteArr){
-    
-}
-
-bool ConnectionHandler::getMsgArrAck(char *byteArr){
-
+bool ConnectionHandler::getLine2(string& ackAns, char* byteArr) {
+    return getMsgArr(ackAns, byteArr);
 }
 
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
