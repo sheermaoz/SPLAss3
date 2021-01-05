@@ -6,12 +6,12 @@ public class ReactorMain {
     public static void main(String[] args) {
         if (args.length != 2)
         {
-            System.out.println("USAGE: ReactorMain <numOfThreads> <port>");
+            System.out.println("USAGE: ReactorMain <port> <numberOfThreads");
             return;
         }
         Server.reactor(
-            Integer.valueOf(args[0]), 
             Integer.valueOf(args[1]), 
+            Integer.valueOf(args[0]), 
             ()->{return new BGRSServerProtocol();}, 
             ()->{return new MsgEncDec();}
             ).serve();
