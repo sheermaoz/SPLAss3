@@ -30,6 +30,8 @@ public:
 
     bool getMsgArr(string& frame, vector<char>& byteArr);
 
+    bool getLine(string &ackAns, vector<char>& byteArr);
+
     virtual ~ConnectionHandler();
  
     // Connect to the remote machine
@@ -43,17 +45,9 @@ public:
     // Returns false in case the connection is closed before all the data is sent.
     bool sendBytes(const char bytes[], int bytesToWrite);
 	
-    // Read an ascii line from the server
-    // Returns false in case connection closed before a newline can be read.
-    bool getLine(std::string& line);
-	
 	// Send an ascii line from the server
     // Returns false in case connection closed before all the data is sent.
     bool sendLine(std::string& line);
- 
-    // Get Ascii data from the server until the delimiter character
-    // Returns false in case connection closed before null can be read.
-    bool getFrameAscii(std::string& frame, char delimiter);
  
     // Send a message to the remote host.
     // Returns false in case connection is closed before all the data is sent.
@@ -63,7 +57,7 @@ public:
     void close();
 
 
-    bool getLine2(string &ackAns, vector<char>& byteArr);
+
 }; //class ConnectionHandler
  
 #endif

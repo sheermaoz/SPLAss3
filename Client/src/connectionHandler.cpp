@@ -14,7 +14,7 @@ using std::endl;
 using std::string;
 using namespace std;
  
-ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_){}
+ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_), EncDec(){}
     
 ConnectionHandler::~ConnectionHandler() {
     close();
@@ -69,34 +69,9 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     }
     return true;
 }
- 
-bool ConnectionHandler::getLine(std::string& line) {
-    return getFrameAscii(line, '\0');
-}
 
 bool ConnectionHandler::sendLine(std::string& line) {
     return sendFrameAscii(line, '\0');
-}
- 
-
-bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
-    char ch;
-    // Stop when we encounter the null character.
-    // Notice that the null character is not appended to the frame string.
-    try {
-	do{
-		if(!getBytes(&ch, 1))
-		{
-			return false;
-		}
-		if(ch!='\0')  
-			frame.append(1, ch);
-	}while (delimiter != ch);
-    } catch (std::exception& e) {
-	std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
-	return false;
-    }
-    return true;
 }
 
 bool ConnectionHandler::getMsgArr(string& frame, vector<char>& byteArr) {
@@ -145,10 +120,6 @@ bool ConnectionHandler::getMsgArrAck(string &frame){
         return false;
     }
     return true;
-}
-
-bool ConnectionHandler::getLine2(string& ackAns, vector<char>& byteArr) {
-    return getMsgArr(ackAns, byteArr);
 }
 
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {

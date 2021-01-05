@@ -7,7 +7,7 @@ using namespace std;
 
 class MessageEncoderDecoder {
 public:
-
+    MessageEncoderDecoder();
 
     Message encode(string arg);
 

@@ -3,24 +3,21 @@
 
 using namespace std;
 
-ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _mutex(_mutex), _handler(handler) {
-
-}
+ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _mutex(_mutex), _handler(handler) {}
 
 void ServerCom::run() {
     while(!shouldTerminate){
-
-
         vector<char> byteArr;
-
         string ackAns;
-        if (!_handler.getLine2(ackAns, byteArr)) {
+
+        if (!_handler.getLine(ackAns, byteArr)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
-        char byteArrCopy[] = {byteArr[0], byteArr[1]};
+
+        char byteArrCopy[] = {byteArr[0], byteArr[1]};   //copying the op code to a char array
         _handler.flag = false;
-        char msgCode[2];
+        char msgCode[2];                      //copying the number of the ack/error
         msgCode[0] = byteArr[2];
         msgCode[1] = byteArr[3];
         short code = _handler.EncDec.bytesToShort(msgCode);
