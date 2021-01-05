@@ -7,9 +7,12 @@ using namespace std;
 
 class MessageEncoderDecoder {
 public:
-    string decodeNextByte(char nextByte);
+    MessageEncoderDecoder();
+
     Message encode(string arg);
+
     short bytesToShort(char* bytesArr);
+
     void shortToBytes(short num, char* bytesArr);
 
     Message type1(short op, vector<string> splittedArg);

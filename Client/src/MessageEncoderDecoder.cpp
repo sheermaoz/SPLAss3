@@ -12,8 +12,6 @@ Message MessageEncoderDecoder::encode(string arg) {
     vector<string> splittedArg;
     boost::split(splittedArg, arg, boost::is_any_of(" "));
     char *opByte = new char[2];
-    char *shortAns = new char[2];
-    short myShort = 0;
 
     if (splittedArg[0] == "ADMINREG") {
         return type1(1, splittedArg);
@@ -52,6 +50,7 @@ Message MessageEncoderDecoder::encode(string arg) {
     if(splittedArg[0] == "STUDENTSTAT"){
         shortToBytes(8, opByte);
         Message retMsg = Message(*opByte, 8, splittedArg[1]);
+        delete[] opByte;
         return retMsg;
     }
 
@@ -59,6 +58,7 @@ Message MessageEncoderDecoder::encode(string arg) {
         return type3(11);
     }
 
+    delete[] opByte;
 }
 
 Message MessageEncoderDecoder::type1(short op, vector<string> splittedArg){
@@ -66,6 +66,7 @@ Message MessageEncoderDecoder::type1(short op, vector<string> splittedArg){
 
     shortToBytes(op, opByte);
     Message retMsg = Message(splittedArg[1], splittedArg[2], *opByte, op);
+    delete[] opByte;
     return retMsg;
 }
 
@@ -81,8 +82,10 @@ Message MessageEncoderDecoder::type2(short op, vector<string> splittedArg){
     }
     catch(boost::bad_lexical_cast &) {}
     shortToBytes(myShort, shortAns);
-
     Message retMsg = Message(*opByte, op, *shortAns);
+
+    delete[] opByte;
+    delete[] shortAns;
     return retMsg;
 }
 
@@ -91,11 +94,8 @@ Message MessageEncoderDecoder::type3(short op){
 
     shortToBytes(op, opByte);
     Message retMsg = Message(*opByte, op);
+    delete[] opByte;
     return retMsg;
-}
-
-string MessageEncoderDecoder::decodeNextByte(char nextByte) {
-    return std::__cxx11::string();
 }
 
 short MessageEncoderDecoder::bytesToShort(char *bytesArr) {
@@ -108,4 +108,6 @@ void MessageEncoderDecoder::shortToBytes(short num, char *bytesArr) {
     bytesArr[0] = ((num >> 8) & 0xFF);
     bytesArr[1] = (num & 0xFF);
 }
+
+MessageEncoderDecoder::MessageEncoderDecoder() {}
 

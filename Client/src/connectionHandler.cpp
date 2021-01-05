@@ -1,5 +1,9 @@
 #include <connectionHandler.h>
 #include <thread>
+#include <array>
+#include <iostream>
+#include <algorithm>
+#include <string>
 
 using boost::asio::ip::tcp;
 
@@ -10,7 +14,7 @@ using std::endl;
 using std::string;
 using namespace std;
  
-ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_){}
+ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_), EncDec(){}
     
 ConnectionHandler::~ConnectionHandler() {
     close();
@@ -39,7 +43,7 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
 	boost::system::error_code error;
     try {
         while (!error && bytesToRead > tmp ) {
-			tmp += socket_.read_some(boost::asio::buffer(bytes+tmp, bytesToRead-tmp), error);			
+			tmp += socket_.read_some(boost::asio::buffer(bytes+tmp, bytesToRead-tmp), error);
         }
 		if(error)
 			throw boost::system::system_error(error);
@@ -65,37 +69,59 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     }
     return true;
 }
- 
-bool ConnectionHandler::getLine(std::string& line) {
-    return getFrameAscii(line, '\0');
-}
 
 bool ConnectionHandler::sendLine(std::string& line) {
     return sendFrameAscii(line, '\0');
 }
- 
 
-bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
+bool ConnectionHandler::getMsgArr(string& frame, vector<char>& byteArr) {
+
     char ch;
-    // Stop when we encounter the null character.
-    // Notice that the null character is not appended to the frame string.
+    int i=0;
+
     try {
-	do{
-		if(!getBytes(&ch, 1))
-		{
-			return false;
-		}
-		if(ch!='\0')  
-			frame.append(1, ch);
-	}while (delimiter != ch);
+        do{
+            if(!getBytes(&ch, 1))
+            {
+                return false;
+            }
+            byteArr.push_back(ch);
+            i = i+1;
+        }while (i < 4);
     } catch (std::exception& e) {
-	std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
-	return false;
+        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
+        return false;
+    }
+
+    char byteArrCopy[] = {byteArr[0], byteArr[1]};
+    if(EncDec.bytesToShort(byteArrCopy) == 12){
+        return getMsgArrAck(frame);
+    }
+    return true;
+
+}
+
+bool ConnectionHandler::getMsgArrAck(string &frame){
+    char ch;
+
+    try {
+        do{
+            if(!getBytes(&ch, 1))
+            {
+                return false;
+            }
+            if(ch!='\0' ){
+                frame.append(1, ch);
+            }
+
+        }while (ch != '\0');
+    } catch (std::exception& e) {
+        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
+        return false;
     }
     return true;
 }
- 
- 
+
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
 	bool result=sendBytes(frame.c_str(),frame.length());
 	if(!result) return false;
@@ -112,9 +138,7 @@ void ConnectionHandler::close() {
 }
 
 bool ConnectionHandler::logoutAnswer() {
-    while(!flag){
-        this_thread::yield();
-    }
+    while(!flag){}
     if(logoutAns == "ACK 4")
         return true;
     else

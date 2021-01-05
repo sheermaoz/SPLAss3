@@ -1,31 +1,45 @@
 #include "ServerCom.h"
-
+#include <vector>
 
 using namespace std;
 
-ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _mutex(_mutex), _handler(handler) {
-
-}
+ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _mutex(_mutex), _handler(handler) {}
 
 void ServerCom::run() {
     while(!shouldTerminate){
-        std::string answer;
-        if (!_handler.getLine(answer)) {
+        vector<char> byteArr;
+        string ackAns;
+
+        if (!_handler.getLine(ackAns, byteArr)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
-        cout << answer << endl;
 
+        char byteArrCopy[] = {byteArr[0], byteArr[1]};   //copying the op code to a char array
         _handler.flag = false;
-        if (answer == "ACK 4") {     //checking the case of termination
-            _handler.logoutAns = "ACK 4";
-            _handler.flag = true;
-            Terminate();
+        char msgCode[2];                      //copying the number of the ack/error
+        msgCode[0] = byteArr[2];
+        msgCode[1] = byteArr[3];
+        short code = _handler.EncDec.bytesToShort(msgCode);
+        if (_handler.EncDec.bytesToShort(byteArrCopy) == 12) {
+            cout << "ACK " << code << ackAns << endl;
+            if(code == 4){  //checking the case of termination
+                _handler.logoutAns = "ACK 4";
+                _handler.flag = true;
+                Terminate();
+            }
+        } else {
+            cout << "ERROR " << code << endl;
+            if(code == 4){  //checking the case of termination
+                _handler.logoutAns = "ERR 4";
+                _handler.flag = true;
+            }
         }
-        if (answer == "ERR 4"){
-            _handler.logoutAns = "ERR 4";
-            _handler.flag = true;
-        }
+
+
+
+
+
 
     }
 }

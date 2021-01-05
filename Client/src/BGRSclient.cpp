@@ -1,5 +1,3 @@
-#include "BGRSclient.h"
-
 #include <stdlib.h>
 #include <connectionHandler.h>
 #include <iostream>
@@ -7,9 +5,6 @@
 #include <thread>
 #include <ServerCom.h>
 #include <UserListener.h>
-#include <boost/lexical_cast.hpp>
-#include <boost/algorithm/string.hpp>
-#include <vector>
 #include <Message.h>
 
 using namespace std;
