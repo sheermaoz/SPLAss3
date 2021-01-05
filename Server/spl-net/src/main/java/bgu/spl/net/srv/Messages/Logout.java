@@ -14,6 +14,7 @@ public class Logout extends Message {
         {
             return null;
         }
+       usr.logout();
         return true;
     }
     
