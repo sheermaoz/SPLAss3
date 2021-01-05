@@ -108,12 +108,8 @@ public class Database {
         {
             return null;
         }
-        synchronized(name)
-        {
-            users.put(name, new User(name, type, password));
-            return true;
-        }
-        
+        users.put(name, new User(name, type, password));
+        return true;
     }
 
     public User login (String name, String password)
@@ -123,16 +119,11 @@ public class Database {
         {
             return null;
         }
-        synchronized(user)
+        if (user.getPassword().equals(password))
         {
-            if (user.getPassword().equals(password) && !user.isLoggedIn())
-            {
-                user.login();
-                return user;
-            }
-            return null;
+            return user;
         }
-        
+        return null;
     }
 
     public Boolean courseRegister(String name, short courseNum)
@@ -142,7 +133,6 @@ public class Database {
         {
             return null;
         }
-       
         for (Short num : course.getKdam())
         {
             if (!users.get(name).getCourses().contains(num))
@@ -150,16 +140,12 @@ public class Database {
                 return null;
             }
         }
-        synchronized(course)
+        if (course.register(name))
         {
-            if (course.register(name))
-            {
-                users.get(name).register(courseNum);
-                return true;
-            }
-            return null;
-
+            users.get(name).register(courseNum);
+            return true;
         }
+        return null;
     }
 
     public Short[] checkKdam(Short course)
