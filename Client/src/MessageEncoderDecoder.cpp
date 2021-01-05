@@ -109,5 +109,4 @@ void MessageEncoderDecoder::shortToBytes(short num, char *bytesArr) {
     bytesArr[1] = (num & 0xFF);
 }
 
-MessageEncoderDecoder::MessageEncoderDecoder() {}
 
