@@ -3,7 +3,7 @@
 
 using namespace std;
 
-ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _mutex(_mutex), _handler(handler) {}
+ServerCom::ServerCom(mutex &_mutex, ConnectionHandler& handler): _handler(handler), _mutex(_mutex), shouldTerminate(false)  {}
 
 void ServerCom::run() {
     while(!shouldTerminate){

@@ -8,6 +8,8 @@ using namespace std;
 
 class Message {
 public:
+
+
     string username;
     string password;
     string arg;
@@ -15,6 +17,7 @@ public:
     char *shortAns;
     short op_code;
 
+    Message();
 
     Message(string username, string password, char &opByte, short op_code);
 

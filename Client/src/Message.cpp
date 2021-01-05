@@ -1,15 +1,19 @@
 #include "Message.h"
 
 Message::Message(string username, string password, char &opByte, short op_code) :
-        username(username), password(password),
-        opByte(&opByte), op_code(op_code) {}
+        username(username), password(password), arg(),
+        opByte(&opByte), shortAns(), op_code(op_code) {}
 
-Message::Message(char &opByte, short op_code) : opByte(&opByte), op_code(op_code) {}
+Message::Message(char &opByte, short op_code)
+        : username(), password(), arg(), opByte(&opByte), shortAns(), op_code(op_code) {}
 
-Message::Message(char &opByte, short op_code, char &shortAns) : opByte(&opByte), op_code(op_code),
-                                                                shortAns(&shortAns) {}
+Message::Message(char &opByte, short op_code, char &shortAns)
+        : username(), password(), arg(), opByte(&opByte), shortAns(&shortAns), op_code(op_code) {}
 
-Message::Message(char &opByte, short op_code, string arg) : opByte(&opByte), op_code(op_code), arg(arg) {}
+Message::Message(char &opByte, short op_code, string arg) : username(),
+                                                            password(), arg(arg), opByte(&opByte),
+                                                            shortAns(), op_code(op_code) {}
+Message::Message():username(), password(), arg(), opByte(), shortAns(), op_code(){}
 
 Message::~Message() {
     if (opByte)
@@ -18,20 +22,8 @@ Message::~Message() {
         delete[] shortAns;
 }
 
-Message::Message(const Message &aMsg) {
-    opByte = aMsg.opByte;
-    shortAns = aMsg.shortAns;
-    op_code = op_code;
-    if (!aMsg.username.empty()) {
-        username = aMsg.username;
-    }
-    if (!aMsg.password.empty()) {
-        password = aMsg.password;
-    }
-    if (!aMsg.arg.empty()) {
-        arg = arg;
-    }
-}
+Message::Message(const Message &aMsg) : username(aMsg.username), password(aMsg.password), arg(aMsg.arg),
+                                        opByte(aMsg.opByte), shortAns(aMsg.shortAns), op_code(aMsg.op_code) {}
 
 
 Message &Message::operator=(const Message &M) {
@@ -45,6 +37,6 @@ Message &Message::operator=(const Message &M) {
     this->username = M.username;
     this->password = M.password;
     this->arg = M.arg;
-    
+
     return *this;
 }

@@ -1,6 +1,6 @@
 #include "UserListener.h"
 
-UserListener::UserListener(mutex &_mutex, ConnectionHandler &handler): _mutex(_mutex), _handler(handler) {
+UserListener::UserListener(mutex &_mutex, ConnectionHandler &handler): _handler(handler), _mutex(_mutex), shouldTerminate(false) {
 
 }
 
@@ -19,7 +19,7 @@ void UserListener::run() {
         Message toSend = _handler.EncDec.encode(line);
 
         //sending
-        if(toSend.op_code == 1 | toSend.op_code == 2 | toSend.op_code == 3) {
+        if((toSend.op_code == 1) | (toSend.op_code == 2) | (toSend.op_code == 3)) {
             if(!sendOp(toSend))
                 break;
             if (!_handler.sendLine(toSend.username)) {     //sending to the socket
@@ -33,7 +33,7 @@ void UserListener::run() {
             continue;
         }
 
-        if(toSend.op_code == 4 | toSend.op_code == 11){
+        if((toSend.op_code == 4) | (toSend.op_code == 11)){
             if(!sendOp(toSend))
                 break;
         }
@@ -41,7 +41,7 @@ void UserListener::run() {
             if(_handler.logoutAnswer())
                 shouldTerminate = true;
 
-        if(toSend.op_code >= 5 && toSend.op_code <=10 && toSend.op_code!=8){
+        if((toSend.op_code >= 5) && (toSend.op_code <=10) && (toSend.op_code!=8)){
             if(!sendOp(toSend))
                 break;
             if(!sendShortAns(toSend))

@@ -59,6 +59,7 @@ Message MessageEncoderDecoder::encode(string arg) {
     }
 
     delete[] opByte;
+    return Message();
 }
 
 Message MessageEncoderDecoder::type1(short op, vector<string> splittedArg){

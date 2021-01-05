@@ -15,7 +15,7 @@ using std::string;
 using namespace std;
 
 ConnectionHandler::ConnectionHandler(string host, short port) : host_(host), port_(port), io_service_(),
-                                                                socket_(io_service_), EncDec() {}
+                                                                socket_(io_service_), EncDec(), logoutAns() {}
 
 ConnectionHandler::~ConnectionHandler() {
     close();
