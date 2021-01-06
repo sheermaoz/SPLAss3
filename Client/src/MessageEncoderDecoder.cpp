@@ -75,6 +75,8 @@ Message MessageEncoderDecoder::type2(short op, vector<string> splittedArg){
     }
     catch(boost::bad_lexical_cast &) {}
 
+    shortToBytes(myShort, shortAns);
+
     Message retMsg = Message(*opByte, op, *shortAns);
     return retMsg;
 }
