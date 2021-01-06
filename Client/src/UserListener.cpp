@@ -17,15 +17,12 @@ void UserListener::run() {
 
         //encoding
         Message toSend = _handler.EncDec.encode(line);
+        cout << "short: " << _handler.EncDec.bytesToShort(toSend.opByte) << endl;
 
         //sending
         if((toSend.op_code == 1) | (toSend.op_code == 2) | (toSend.op_code == 3)) {
             if(!sendOp(toSend))
                 break;
-            if (_handler.EncDec.bytesToShort(toSend.opByte) == 2)
-            {
-                cout << "it is 2" << endl;
-            }
             if (!_handler.sendLine(toSend.username)) {     //sending to the socket
                 std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
@@ -54,12 +51,15 @@ void UserListener::run() {
         }
 
         if(toSend.op_code == 8){
+            cout << "opcode: " << _handler.EncDec.bytesToShort(toSend.opByte) << endl;
             if(!sendOp(toSend))
                 break;
+            cout << "opcode: " << _handler.EncDec.bytesToShort(toSend.opByte) << endl;
             if (!_handler.sendLine(toSend.arg)) {     //sending to the socket
                 std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
             }
+            cout << "ARG: " << toSend.arg << endl;
         }
 
     }
@@ -67,15 +67,17 @@ void UserListener::run() {
 
 
 
-bool UserListener::sendOp(Message toSend){
+bool UserListener::sendOp(Message &toSend){
+    //cout << "Bytes: " << _handler.EncDec.bytesToShort(toSend.shortAns) << endl;
     if(!_handler.sendBytes(toSend.opByte, 2)){
         std::cout << "Disconnected. Exiting...\n" << std::endl;
         return false;
     }
+    //cout << "Bytes: " << _handler.EncDec.bytesToShort(toSend.shortAns) << endl;
     return true;
 }
 
-bool UserListener::sendShortAns(Message toSend){
+bool UserListener::sendShortAns(Message &toSend){
     if(!_handler.sendBytes(toSend.shortAns, 2)){
         std::cout << "Disconnected. Exiting...\n" << std::endl;
         return false;
