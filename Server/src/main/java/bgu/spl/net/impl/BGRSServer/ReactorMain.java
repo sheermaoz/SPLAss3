@@ -6,7 +6,7 @@ public class ReactorMain {
     public static void main(String[] args) {
         if (args.length != 2)
         {
-            System.out.println("USAGE: ReactorMain <numOfThreads> <port>");
+            System.out.println("USAGE: ReactorMain <port> <numOfThreads>");
             return;
         }
         Server.reactor(
