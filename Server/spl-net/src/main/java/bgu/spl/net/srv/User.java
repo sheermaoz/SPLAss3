@@ -8,6 +8,7 @@ public class User {
     private Type type;
     private String password;
     private List<Short> courses;
+    private boolean loggedIn;
 
     public User(String _name, Type _type, String _pass)
     {
@@ -15,6 +16,7 @@ public class User {
         type = _type;
         password = _pass;
         courses = new LinkedList<>();
+        loggedIn = false;
     }
 
     public String getName()
@@ -50,6 +52,21 @@ public class User {
     public List<Short> getCourses()
     {
         return courses;
+    }
+
+    public void login()
+    {
+        loggedIn = true;
+    }
+
+    public void logout()
+    {
+        loggedIn = false;
+    }
+
+    public boolean isLoggedIn()
+    {
+        return loggedIn;
     }
     
 }

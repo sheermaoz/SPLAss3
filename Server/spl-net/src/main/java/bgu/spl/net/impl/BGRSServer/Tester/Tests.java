@@ -233,8 +233,8 @@ public class Tests implements Runnable {
                     numTimesSuccess++;
                     break;
                 }
-                if (s.equals("ACK 3") || s.equals("ACK 4") || s.equals("ACK 1"))
-                    numTimesSuccess++;
+                if (s.equals("ACK 3") || s.equals("ACK 4") || s.equals("ACK 1")){
+                    numTimesSuccess++;}
             }
             if (numTimesSuccess == numThreads * 3)
                 response = ("Admin Logical Tests Test Passed!");
@@ -662,7 +662,7 @@ public class Tests implements Runnable {
 
             System.out.println("Be patient...");
             new Thread(() -> {
-                ReactorMain.main(new String[]{"7777", "3"}); //You can change it to reactor also
+                ReactorMain.main(new String[]{"7777", "50"}); //You can change it to reactor also
             }).start();
 
             ArrayList<String> testAnswers = new ArrayList<>();
@@ -675,8 +675,8 @@ public class Tests implements Runnable {
             testAnswers.add(testRegisterCourseWithKdam());
             testAnswers.add(testKdamCheck());
             testAnswers.add(testMyCourses());
-            testAnswers.add(testStudentStat());
-            testAnswers.add(testCourseStat());
+            //testAnswers.add(testStudentStat());
+            //testAnswers.add(testCourseStat());
 
             System.out.println("\r\n\r\n----------------------------------");
             for (String testAnswer : testAnswers) System.out.println(testAnswer);

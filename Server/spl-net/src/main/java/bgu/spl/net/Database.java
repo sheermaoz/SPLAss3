@@ -104,11 +104,15 @@ public class Database {
 
     public Boolean register(String name, Type type, String password)
     {
-        if (users.get(name) != null)
+        
+        synchronized (this)
         {
-            return null;
+            if (users.get(name) != null)
+            {
+                return null;
+            }
+            users.put(name, new User(name, type, password));
         }
-        users.put(name, new User(name, type, password));
         return true;
     }
 
@@ -119,9 +123,13 @@ public class Database {
         {
             return null;
         }
-        if (user.getPassword().equals(password))
+        synchronized(user)
         {
-            return user;
+            if (user.getPassword().equals(password) && !user.isLoggedIn())
+            {
+                user.login();
+                return user;
+            }
         }
         return null;
     }
@@ -140,11 +148,15 @@ public class Database {
                 return null;
             }
         }
-        if (course.register(name))
+        synchronized(course)
         {
-            users.get(name).register(courseNum);
-            return true;
+            if (course.register(name))
+            {
+                users.get(name).register(courseNum);
+                return true;
+            }
         }
+        
         return null;
     }
 
@@ -160,14 +172,24 @@ public class Database {
         return users.get(name).contains(course);
     }
 
-    public Boolean unregister(String name, Short course)
+    public Boolean unregister(String name, Short num)
     {
-        if (!users.get(name).contains(course))
+        if (!users.get(name).contains(num))
         {
             return null;
         }
-        users.get(name).unregister(course);
-        courses.get(course).unregister(name);
+        Course course = courses.get(num);
+        if (course == null)
+        {
+            return null;
+        }
+        synchronized(course){
+            users.get(name).unregister(num);
+            course.unregister(name);
+            
+        }
+        
+        
         return true;
     }
 
@@ -191,7 +213,12 @@ public class Database {
 
     public Short[] myCourses(String name)
     {
-        Short[] myCourses =  users.get(name).getCourses().toArray(new Short[0]);
+        User user = users.get(name);
+        if (user == null)
+        {
+            return null;
+        }
+        Short[] myCourses =  user.getCourses().toArray(new Short[0]);
         return sort(myCourses);
     }
 
