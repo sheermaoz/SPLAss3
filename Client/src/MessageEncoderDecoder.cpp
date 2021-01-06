@@ -83,8 +83,6 @@ Message MessageEncoderDecoder::type2(short op, vector<string> splittedArg){
     shortToBytes(myShort, shortAns);
     Message retMsg = Message(*opByte, op, *shortAns);
 
-    delete[] opByte;
-    delete[] shortAns;
     return retMsg;
 }
 
@@ -93,7 +91,6 @@ Message MessageEncoderDecoder::type3(short op){
 
     shortToBytes(op, opByte);
     Message retMsg = Message(*opByte, op);
-    delete[] opByte;
     return retMsg;
 }
 
