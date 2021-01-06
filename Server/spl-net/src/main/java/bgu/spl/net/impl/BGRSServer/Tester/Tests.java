@@ -403,7 +403,7 @@ public class Tests implements Runnable {
             return "MYCOURSES Test - Failed 2";
         else return "MYCOURSES Test - Passed";
     }
-    public String testStudentStat(){
+    /*public String testStudentStat(){
         CommandProcessor commandProcessorOfStudent=new CommandProcessor();
         commandProcessorOfStudent.initialize();
         CommandProcessor commandProcessorOfAdmin=new CommandProcessor();
@@ -435,8 +435,8 @@ public class Tests implements Runnable {
         if (!ack1.equals("ACK 8")||!studentName1.equals("Student: RON0")||!coursesL1.equals("Courses: []"))
             return "StudentStat Test - Failed 2";
         return "StudentStat Test -Passed";
-    }
-    public String testCourseStat(){
+    }*/
+    /*public String testCourseStat(){
         Course p=getCourseWithNoKdams();
         int numOfThreads=p.numOfMaxStudents;
         registerStudentsToCourse(p,numOfThreads);
@@ -476,7 +476,7 @@ public class Tests implements Runnable {
             return "CourseStat Test - Failed";
         return "CourseStat Test - Passed";
 
-    }
+    }*/
     public ConcurrentLinkedQueue<String> registerStudentsToCourse(Course p,int numThreads) {
         ConcurrentLinkedQueue<String> outputs  = new ConcurrentLinkedQueue<>();
         try {
@@ -675,8 +675,8 @@ public class Tests implements Runnable {
             testAnswers.add(testRegisterCourseWithKdam());
             testAnswers.add(testKdamCheck());
             testAnswers.add(testMyCourses());
-            testAnswers.add(testStudentStat());
-            testAnswers.add(testCourseStat());
+            /*testAnswers.add(testStudentStat());*/
+            /*testAnswers.add(testCourseStat());*/
 
             System.out.println("\r\n\r\n----------------------------------");
             for (String testAnswer : testAnswers) System.out.println(testAnswer);
