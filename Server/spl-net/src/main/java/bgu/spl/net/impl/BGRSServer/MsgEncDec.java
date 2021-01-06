@@ -53,6 +53,13 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
             return null;
         }
 
+        if(op_code == 8){
+            pushByte(nextByte);  //including the '0' in the string
+            if (nextByte == '\0')
+                return popMsg();
+            return null;
+        }
+
         return null;
     }
 
