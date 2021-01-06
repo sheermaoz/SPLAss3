@@ -1,10 +1,10 @@
-101|Algebra1|[]|5
-102|Infi1|[]|5
-103|Discrete|[]|5
-111|CS-intro|[]|5
-201|Algebra2|[101]|5
-202|infi2|[102]|5
-211|Data Structures|[111]|5
-311|CS-adv.|[111,211]|5
-301|Math-adv.|[103,102,1010,201,202]|5
-400|final|[301,311,211,202,201,111,103]|5
+1|Algebra1|[]|5
+2|Infi1|[]|5
+3|Discrete|[]|5
+4|CS-intro|[]|5
+5|Algebra2|[1]|5
+6|infi2|[2]|5
+7|Data Structures|[4]|5
+8|CS-adv.|[4,7]|5
+9|Math-adv.|[3,2,1,5,6]|5
+10|final|[9,8,7,6,5,4,3]|5

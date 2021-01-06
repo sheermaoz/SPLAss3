@@ -18,9 +18,9 @@ public:
     UserListener(mutex &_mutex, ConnectionHandler &handler);
     void run();
 
-    bool sendOp(Message toSend);
+    bool sendOp(Message &toSend);
 
-    bool sendShortAns(Message toSend);
+    bool sendShortAns(Message &toSend);
 };
 
 

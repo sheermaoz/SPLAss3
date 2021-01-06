@@ -97,8 +97,9 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
                 return new KdamCheck(result);
             case 7:
                 return new CourseStat(result);
-            case 8:
-                return new StudentStat(result);
+            case 8:{
+                System.out.println("MAKING STUDENSTAT");
+                return new StudentStat(result);}
             case 9:
                 return new IsRegistered(result);
             case 10:

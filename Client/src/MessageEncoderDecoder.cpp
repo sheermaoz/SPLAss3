@@ -50,7 +50,7 @@ Message MessageEncoderDecoder::encode(string arg) {
         char *opByte = new char[2];
         shortToBytes(8, opByte);
         Message retMsg = Message(*opByte, 8, splittedArg[1]);
-        delete[] opByte;
+        cout << "short: " << bytesToShort(opByte) << endl;
         return retMsg;
     }
 
