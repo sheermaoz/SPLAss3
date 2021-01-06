@@ -148,6 +148,10 @@ public class Database {
                 return null;
             }
         }
+        if (users.get(name).contains(courseNum))
+        {
+            return null;
+        }
         synchronized(course)
         {
             if (course.register(name))
@@ -162,13 +166,22 @@ public class Database {
 
     public Short[] checkKdam(Short course)
     {
-        Short[] kdam = courses.get(course).getKdam();
+        Course cour = courses.get(course);
+        if (cour == null)
+        {
+            return null;
+        }
+        Short[] kdam = cour.getKdam();
         
         return sort(kdam);
     }
 
-    public boolean isRegistered(String name, Short course)
+    public Boolean isRegistered(String name, Short course)
     {
+        if (courses.get(course) == null)
+        {
+            return null;
+        }
         return users.get(name).contains(course);
     }
 
@@ -214,7 +227,7 @@ public class Database {
     public Short[] myCourses(String name)
     {
         User user = users.get(name);
-        if (user == null)
+        if (user == null || user.getType() == Type.Admin)
         {
             return null;
         }
@@ -233,7 +246,7 @@ public class Database {
         Arrays.sort(usersReg);
         String status = "Course: (" + num + ") " + course.getName() + "\nSeats Available: " +
             course.getNumStudents() + "/" + course.getMaxStudents() + "\nStudents Registered: "
-            + Arrays.toString(usersReg);
+            + Arrays.toString(usersReg).replace(" ", "");
         return status;
     }
 

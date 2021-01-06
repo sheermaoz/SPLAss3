@@ -21,7 +21,7 @@ public class KdamCheck extends Message {
         {
             return null;
         }
-        return Arrays.toString(db.checkKdam(courseNum));
+        return Arrays.toString(db.checkKdam(courseNum)).replace(" ", "");
     }
     
 }

@@ -46,7 +46,8 @@ public class User {
 
     public void unregister(short num)
     {
-        courses.remove(num);
+        int ind = courses.indexOf(num);
+        courses.remove(ind);
     }
 
     public List<Short> getCourses()

@@ -17,7 +17,7 @@ public class MyCourses extends Message {
         {
             return null;
         }
-        return Arrays.toString(db.myCourses(usr.getName()));
+        return Arrays.toString(db.myCourses(usr.getName())).replace(" ", "");
     }
     
 }

@@ -67,7 +67,8 @@ public class Course {
 
     public void unregister(String name)
     {
-        students.remove(name);
+        int ind = students.indexOf(name);
+        students.remove(ind);
         numStuds--;
     }
 
