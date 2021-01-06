@@ -46,11 +46,7 @@ Message MessageEncoderDecoder::encode(string arg) {
     }
 
     if(splittedArg[0] == "STUDENTSTAT"){
-        char *opByte = new char[2];
-        shortToBytes(8, opByte);
-        Message retMsg = Message(*opByte, 8, splittedArg[1]);
-        cout << "short: " << bytesToShort(opByte) << endl;
-        return retMsg;
+        return type4(8, splittedArg);
     }
 
     if(splittedArg[0] == "MYCOURSES"){
@@ -79,6 +75,8 @@ Message MessageEncoderDecoder::type2(short op, vector<string> splittedArg){
     }
     catch(boost::bad_lexical_cast &) {}
 
+    shortToBytes(myShort, shortAns);
+
     Message retMsg = Message(*opByte, op, *shortAns);
     return retMsg;
 }
@@ -89,6 +87,14 @@ Message MessageEncoderDecoder::type3(short op){
     shortToBytes(op, opByte);
     Message retMsg = Message(*opByte, op);
     return retMsg;
+}
+
+Message MessageEncoderDecoder::type4(short op, vector<string> splittedArg){
+    char *opByte = new char[2];
+        shortToBytes(8, opByte);
+        Message retMsg = Message(*opByte, 8, splittedArg[1]);
+        return retMsg;
+    
 }
 
 short MessageEncoderDecoder::bytesToShort(char *bytesArr) {

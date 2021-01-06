@@ -20,6 +20,8 @@ public:
 
     Message type3(short op);
 
+     Message type4(short op, vector<string> splittedArg);
+
 
 };
 
