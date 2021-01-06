@@ -65,6 +65,7 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     try {
         while (!error && bytesToWrite > tmp) {
             tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
+            cout << "SenBytes" << endl;
         }
         if (error)
             throw boost::system::system_error(error);

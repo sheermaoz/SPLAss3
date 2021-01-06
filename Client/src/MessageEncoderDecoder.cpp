@@ -11,7 +11,6 @@ Message MessageEncoderDecoder::encode(string arg) {
 
     vector<string> splittedArg;
     boost::split(splittedArg, arg, boost::is_any_of(" "));
-    char *opByte = new char[2];
 
     if (splittedArg[0] == "ADMINREG") {
         return type1(1, splittedArg);
@@ -48,6 +47,7 @@ Message MessageEncoderDecoder::encode(string arg) {
     }
 
     if(splittedArg[0] == "STUDENTSTAT"){
+        char *opByte = new char[2];
         shortToBytes(8, opByte);
         Message retMsg = Message(*opByte, 8, splittedArg[1]);
         delete[] opByte;
@@ -58,7 +58,6 @@ Message MessageEncoderDecoder::encode(string arg) {
         return type3(11);
     }
 
-    delete[] opByte;
     return Message();
 }
 
@@ -67,7 +66,6 @@ Message MessageEncoderDecoder::type1(short op, vector<string> splittedArg){
 
     shortToBytes(op, opByte);
     Message retMsg = Message(splittedArg[1], splittedArg[2], *opByte, op);
-    delete[] opByte;
     return retMsg;
 }
 

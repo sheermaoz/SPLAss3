@@ -20,8 +20,17 @@ void UserListener::run() {
 
         //sending
         if((toSend.op_code == 1) | (toSend.op_code == 2) | (toSend.op_code == 3)) {
+            cout << "Sending" << endl;
+            cout << "Byte: " << _handler.EncDec.bytesToShort(toSend.opByte) << endl;
             if(!sendOp(toSend))
                 break;
+            cout << "Username: " << toSend.username << endl;
+            cout << "Password: " << toSend.password << endl;
+            
+            if (_handler.EncDec.bytesToShort(toSend.opByte) == 2)
+            {
+                cout << "it is 2" << endl;
+            }
             if (!_handler.sendLine(toSend.username)) {     //sending to the socket
                 std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
