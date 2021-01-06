@@ -412,6 +412,7 @@ public class Tests implements Runnable {
         ArrayList<Course> courses1 = registerToCourses(commandProcessorOfStudent);
         String courseList="Courses: "+listToString(courses1);
         String output=commandProcessorOfAdmin.sendCommand("STUDENTSTAT RON0");
+        System.out.println(output);
         String [] tokens=output.split("\n");
         String ack        =tokens[0];
         String studentName=tokens[1];

@@ -16,13 +16,13 @@ public class StudentStat extends Message {
 
 
     @Override
-    public Object process(User usr) {
+    public String process(User usr) {
         if (usr == null || usr.getType() == Type.User)
         {
             return null;
         }
         String reply = Arrays.toString(db.myCourses(name));
-        reply = "Student: " + usr.getName() + "\nCourses: " + reply;
+        reply = "\nStudent: " + usr.getName() + "\nCourses: " + reply;
         return reply;
     }
     
