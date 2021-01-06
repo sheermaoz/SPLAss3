@@ -55,8 +55,9 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
 
         if(op_code == 8){
             pushByte(nextByte);  //including the '0' in the string
-            if (nextByte == '\0')
+            if (nextByte == '\0') {
                 return popMsg();
+            }
             return null;
         }
 
@@ -78,7 +79,7 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
         }
         else
         {
-            result = new String(bytes, 2, len, StandardCharsets.UTF_8);
+            result = new String(bytes, 2, len-2 , StandardCharsets.UTF_8);
         }
         retMsg = defineMessage(op_code, result );
         len = 0;
@@ -105,7 +106,6 @@ public class MsgEncDec implements MessageEncoderDecoder<Message> {
             case 7:
                 return new CourseStat(result);
             case 8:{
-                System.out.println("MAKING STUDENSTAT");
                 return new StudentStat(result);}
             case 9:
                 return new IsRegistered(result);

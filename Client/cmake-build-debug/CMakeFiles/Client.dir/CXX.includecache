@@ -20,16 +20,6 @@ string
 Message.h
 -
 
-../include/ServerCom.h
-connectionHandler.h
--
-iostream
--
-mutex
--
-thread
--
-
 ../include/UserListener.h
 connectionHandler.h
 -
@@ -52,24 +42,6 @@ boost/asio.hpp
 MessageEncoderDecoder.h
 -
 
-/home/spl211/SPLAss3/Client/src/BGRSclient.cpp
-stdlib.h
--
-connectionHandler.h
--
-iostream
--
-mutex
--
-thread
--
-ServerCom.h
--
-UserListener.h
--
-Message.h
--
-
 /home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.cpp
 MessageEncoderDecoder.h
 /home/spl211/SPLAss3/Client/src/MessageEncoderDecoder.h
@@ -84,27 +56,7 @@ vector
 boost/lexical_cast.hpp
 -
 
-/home/spl211/SPLAss3/Client/src/ServerCom.cpp
-ServerCom.h
-/home/spl211/SPLAss3/Client/src/ServerCom.h
-vector
--
-
 /home/spl211/SPLAss3/Client/src/UserListener.cpp
 UserListener.h
 /home/spl211/SPLAss3/Client/src/UserListener.h
-
-/home/spl211/SPLAss3/Client/src/connectionHandler.cpp
-connectionHandler.h
--
-thread
--
-array
--
-iostream
--
-algorithm
--
-string
--
 

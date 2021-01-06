@@ -56,7 +56,6 @@ void UserListener::run() {
                 std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
             }
-            cout << "ARG: " << toSend.arg << endl;
         }
 
     }
@@ -66,7 +65,6 @@ void UserListener::run() {
 
 bool UserListener::sendOp(Message &toSend){
     //cout << "Bytes: " << _handler.EncDec.bytesToShort(toSend.shortAns) << endl;
-    cout << _handler.EncDec.bytesToShort(toSend.opByte) << endl;
     if(!_handler.sendBytes(toSend.opByte, 2)){
         std::cout << "Disconnected. Exiting...\n" << std::endl;
         return false;

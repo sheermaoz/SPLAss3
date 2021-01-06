@@ -11,7 +11,7 @@ public class StudentStat extends Message {
 
     public StudentStat(String _name) {
         super((short) 8);
-        name = _name;
+        name = _name.trim();
     }
 
 
@@ -22,7 +22,7 @@ public class StudentStat extends Message {
             return null;
         }
         String reply = Arrays.toString(db.myCourses(name));
-        reply = "\nStudent: " + usr.getName() + "\nCourses: " + reply;
+        reply = "Student: " + name + "\nCourses: " + reply;
         return reply;
     }
     

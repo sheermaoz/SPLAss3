@@ -10,7 +10,6 @@ using namespace std;
 Message MessageEncoderDecoder::encode(string arg) {
     vector<string> splittedArg;
     boost::split(splittedArg, arg, boost::is_any_of(" "));
-
     if (splittedArg[0] == "ADMINREG") {
         return type1(1, splittedArg);
     }
