@@ -21,9 +21,12 @@ public class StudentStat extends Message {
         {
             return null;
         }
-        String reply = Arrays.toString(db.myCourses(name));
-        reply = "Student: " + name + "\nCourses: " + reply;
-        return reply;
+        Short[] courses = db.myCourses(name);
+        if (courses != null)
+        {
+            return "Student: " + name + "\nCourses: " + Arrays.toString(courses).replace(" ", "");
+        }
+        return null;
     }
     
 }
