@@ -50,6 +50,7 @@ void UserListener::run() {
                 break;
             if(!sendShortAns(toSend))
                 break;
+
         }
 
         if(toSend.op_code == 8){

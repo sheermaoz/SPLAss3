@@ -1,4 +1,5 @@
 #include "Message.h"
+using namespace std;
 
 Message::Message(string username, string password, char &opByte, short op_code) :
         username(username), password(password), arg(),
@@ -16,10 +17,11 @@ Message::Message(char &opByte, short op_code, string arg) : username(),
 Message::Message():username(), password(), arg(), opByte(), shortAns(), op_code(){}
 
 Message::~Message() {
-    if (opByte)
-        delete[] opByte;
-    if (shortAns)
+    if (opByte != nullptr)
+        delete opByte;
+    if (shortAns !=nullptr){
         delete[] shortAns;
+    }
 }
 
 Message::Message(const Message &aMsg) : username(aMsg.username), password(aMsg.password), arg(aMsg.arg),

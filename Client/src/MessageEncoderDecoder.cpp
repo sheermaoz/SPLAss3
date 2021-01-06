@@ -8,7 +8,6 @@
 using namespace std;
 
 Message MessageEncoderDecoder::encode(string arg) {
-
     vector<string> splittedArg;
     boost::split(splittedArg, arg, boost::is_any_of(" "));
 
@@ -27,6 +26,7 @@ Message MessageEncoderDecoder::encode(string arg) {
     }
 
     if(splittedArg[0] == "COURSEREG"){
+        Message retMsg2 = type2(5, splittedArg);
         return type2(5, splittedArg);
     }
 
@@ -75,14 +75,12 @@ Message MessageEncoderDecoder::type2(short op, vector<string> splittedArg){
     short myShort = 0;
 
     shortToBytes(op, opByte);
-
     try{
         myShort = boost::lexical_cast<short>(splittedArg[1]);
     }
     catch(boost::bad_lexical_cast &) {}
-    shortToBytes(myShort, shortAns);
-    Message retMsg = Message(*opByte, op, *shortAns);
 
+    Message retMsg = Message(*opByte, op, *shortAns);
     return retMsg;
 }
 
